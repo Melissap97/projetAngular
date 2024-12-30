@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ConnexionComponent } from "./connexion/connexion.component";
+import { ConnexionComponent } from './component/connexion/connexion.component';
 
 @Component({
   selector: 'app-root',
