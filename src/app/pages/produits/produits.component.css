@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+header {
+    
+    margin: 0px;
+    padding: 0px;
+   
+
+}
+
+h1 {
+    color: white;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+
+}
+
+nav {
+    justify-content: center;
+    text-align: center;
+    display:grid;
+    grid-template-columns: 33% 33% 33%;
+    color: green;
+    background-color: white;
+    border-radius: 40px;
+    margin: 50px auto;
+    width: 450px;
+    height: 50px;
+    box-shadow: 3px 3px 10px -3px rgb(45, 44, 44);
+    overflow: hidden;
+    font-size: smaller;
+    
+}
+
+.hover:hover {
+    background-color: green;
+    color: white;
+    
+    
+}
+
+.login {
+    display: flex;
+    justify-content: right;
+    background-color: aliceblue;
+    color: green;
+    width: 450px;
+    height: 50px;
+    box-shadow: 3px 3px 10px -3px rgb(45, 44, 44);
+    overflow: hidden;
+    font-size: smaller;
+    
+}
+
+.image {
+    background-image: url("/jungle4.jpg");
+    height: 450px;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+
+
+footer { 
+    background-color: green;
+    text-align: center;
+    color: white;
+}
