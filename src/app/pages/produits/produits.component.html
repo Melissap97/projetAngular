@@ -1,38 +1,46 @@
+
+<body>
 <div class ="image">
-
  <header>
-    
-  <h1> Projet Angular</h1>
-  
-  <div class="login">
-     <h2>Login</h2>
-  </div>
-  <nav>
+    <div class="login">
+        <h2>Connexion</h2>
+    </div>
+   <nav>
      <div class ="hover">
-        <h2>Produits</h2>
-    </div>
-    <div class ="hover">
-     <h2>Commandes</h2>
-    </div>
-    <div class ="hover">
-     <h2>Users</h2>
-   </div>
-</nav>
+         <h2>Produits </h2>
+     </div>
+     <div class ="hover">
+         <h2>Commandes </h2>
+         </div>
+     <div class ="hover">
+         <h2>Users</h2>
+     </div> 
+ </nav>
+ 
+<div class="titre">
+    <h1> Projet Angular</h1>
+ <h3> Bienvenue</h3>
+</div>
 
-  
-</header>
+ </header>
 </div>
 
  <main>
-   
- <h2>Liste de produits:</h2>
+ <div class="produits">
+ <div class="liste">
+    <h2>Liste de produits:</h2>
+</div>
 
  @for(post of $post | async; track post.id){
     <h2>{{post.title}}</h2>
     <p>{{post.body}}</p>
 
 }
-
+</div>
 </main>
+</body>
 
-<footer> Copyright</footer>
+
+<footer> 
+    <p>© Adrien & Melissa 🦆</p>
+</footer>

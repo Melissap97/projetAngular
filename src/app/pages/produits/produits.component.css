@@ -1,77 +1,103 @@
 * {
     margin: 0;
     padding: 0;
-
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+::ng-deep * {
+      
+    margin: 0;
+    padding: 0;
+  }
 
 header {
-    
     margin: 0px;
-    padding: 0px;
-   
-
+    padding-top: 1px;
 }
 
-h1 {
+.titre {
     color: white;
+    display: inline-block;
+    margin-left: 50px;
+    text-shadow:rgb(0, 37, 2) 5px 0 10px;
+    margin-top: 60px;
+    font-size: large;
 }
+
 
 body {
     margin: 0px;
     padding: 0px;
-
+}
+h3{
+    font-style: italic;
+    font-size: 25px;
+    font-weight: normal;
 }
 
 nav {
     justify-content: center;
     text-align: center;
-    display:grid;
+    display: grid;
     grid-template-columns: 33% 33% 33%;
     color: green;
     background-color: white;
     border-radius: 40px;
-    margin: 50px auto;
+    margin-left: 400px;
+    margin-right: 400px;
     width: 450px;
     height: 50px;
     box-shadow: 3px 3px 10px -3px rgb(45, 44, 44);
     overflow: hidden;
-    font-size: smaller;
+    font-size: 11px;
+    align-content: center;
+}
     
+.login:hover{
+    text-decoration: underline;
+}
+.hover:hover {
+    background-color: rgb(0, 82, 0);
+    color: white;
 }
 
-.hover:hover {
-    background-color: green;
-    color: white;
-    
-    
-}
+
 
 .login {
-    display: flex;
-    justify-content: right;
-    background-color: aliceblue;
-    color: green;
-    width: 450px;
-    height: 50px;
-    box-shadow: 3px 3px 10px -3px rgb(45, 44, 44);
+    justify-content: center;
+    color: rgb(255, 255, 255);
     overflow: hidden;
-    font-size: smaller;
+    font-size: x-small;
+    display: flex;
+    margin-top: 15px;
+    margin-left: 1000px;
+    align-items: center;
     
 }
+
 
 .image {
     background-image: url("/jungle4.jpg");
-    height: 450px;
+    height:450px;
     margin: 0;
     background-repeat: no-repeat;
     background-size: cover;
-    
+}
+
+.liste{
+    text-align: center;
+    margin: 30px;
+}
+
+.produits{
+    margin: 50px;
 }
 
 
-
 footer { 
-    background-color: green;
+    background-color: rgb(0, 82, 0);
     text-align: center;
     color: white;
+    height: 50px;
+    padding-top:50px;
 }
