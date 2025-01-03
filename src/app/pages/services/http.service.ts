@@ -8,7 +8,8 @@ import { ProduitsComponent } from '../produits/produits.component';
 })
 export class HttpService {
 
-  constructor(private httpClient: HttpClient) { }
+ 
 
   
-  }
+
+}

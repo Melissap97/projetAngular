@@ -5,17 +5,19 @@
     <div class="login">
         <h2>Connexion</h2>
     </div>
-   <nav>
-     <div class ="hover">
-         <h2>Produits </h2>
-     </div>
-     <div class ="hover">
-         <h2>Commandes </h2>
-         </div>
-     <div class ="hover">
-         <h2>Users</h2>
-     </div> 
- </nav>
+    <nav>
+        <div class="hoverLeft">
+          <button (click)="pageProduits()">
+            <h2>Produits </h2>
+        </button>
+      </div>
+      <div class="hoverMiddle">
+          <button (click)="pageCommandes()"><h2>Commandes </h2></button>
+      </div>
+      <div class="hoverRight">
+          <button (click)="pageUsers()"><h2>Users</h2></button>
+      </div>
+  </nav> 
  
 <div class="titre">
     <h1> Projet Angular</h1>
@@ -30,17 +32,12 @@
  <div class="liste">
     <h2>Liste de produits:</h2>
 </div>
+{{posts}}
 
- @for(post of $post | async; track post.id){
-    <h2>{{post.title}}</h2>
-    <p>{{post.body}}</p>
-
-}
 </div>
 </main>
 </body>
 
 
 <footer> 
-    <p>© Adrien & Melissa 🦆</p>
-</footer>
+    <p>© Adrien & Melissa 🦆</p></footer>
