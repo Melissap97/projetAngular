@@ -49,6 +49,24 @@ nav {
     margin-left: 60px;
 }
 
+button {
+    color:green;
+    background-color: rgba(255, 255, 255, 0);
+    padding-bottom: 20px;
+    border:none;
+
+}
+
+button:hover {
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    
+}
+
+.pageButton {
+    color: white;
+}
+
 
 .hoverLeft, .hoverMiddle, .hoverRight {
     color: green;
