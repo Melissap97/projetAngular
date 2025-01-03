@@ -62,6 +62,7 @@ button {
 button:hover {
     background-color: rgba(255, 255, 255, 0);
     color: white;
+    cursor: pointer;
     
 }
 
@@ -80,16 +81,18 @@ button:hover {
 .hoverLeft{
     background-color: rgb(0, 82, 0);
     color: white;
+    
 }
 .hoverMiddle {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
+    
 }
 .hoverRight {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     border-top-right-radius: 40px;
-        border-bottom-right-radius: 40px;
+    border-bottom-right-radius: 40px;
 }
 
 .hoverLeft h2, .hoverMiddle h2, .hoverRight h2{
@@ -117,6 +120,14 @@ button:hover {
     margin-left: 1000px;
     align-items: center;
     gap: 30px;   
+}
+
+.login h2 {
+    cursor: pointer;
+}
+
+.login h2:hover {
+    text-decoration: underline;
 }
 
 .connexion:hover, .accueil:hover{
