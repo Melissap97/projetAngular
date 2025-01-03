@@ -29,6 +29,7 @@ body {
     margin: 0px;
     padding: 0px;
 }
+
 h3{
     font-style: italic;
     font-size: 25px;
@@ -48,6 +49,7 @@ nav {
     transform: translate(100%, 0%);
     margin-left: 60px;
 }
+
 
 button {
     color:green;
@@ -94,9 +96,7 @@ button:hover {
     margin-top: 20px;
 }
     
-.login:hover{
-    text-decoration: underline;
-}
+
 .hover:hover {
     background-color: rgb(0, 82, 0);
     color: white;
@@ -116,7 +116,11 @@ button:hover {
     margin-top: 15px;
     margin-left: 1000px;
     align-items: center;
-    
+    gap: 30px;   
+}
+
+.connexion:hover, .accueil:hover{
+    text-decoration: underline;
 }
 
 
@@ -134,7 +138,7 @@ button:hover {
 }
 
 .produits{
-    margin: 50px;
+    margin: 40px 50px  50px 50px;
 }
 
 

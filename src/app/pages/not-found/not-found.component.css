@@ -85,9 +85,7 @@ button:hover {
     margin-top: 20px;
 }
     
-.login:hover{
-    text-decoration: underline;
-}
+
 .hover:hover {
     background-color: rgb(0, 82, 0);
     color: white;
@@ -107,7 +105,11 @@ button:hover {
     margin-top: 15px;
     margin-left: 1000px;
     align-items: center;
-    
+    gap: 30px;   
+}
+
+.connexion:hover, .accueil:hover{
+    text-decoration: underline;
 }
 
 

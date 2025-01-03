@@ -40,7 +40,6 @@ pageUsers() {
 }
   
  private apiUrl = 'http://localhost:4200/api/products'; 
- // 'Content-Type': 'application/json';
  getPosts(): Observable<any[]> {
  return this.HttpClient.get<any[]>(this.apiUrl);
  }
