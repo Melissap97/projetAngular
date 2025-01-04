@@ -143,9 +143,20 @@ button:hover {
     background-size: cover;
 }
 
-.liste, .ajouter, .modifier{
+.liste, .formulaire{
     text-align: center;
     margin: 30px;
+}
+
+.formulaire{
+    border: solid 2px green;
+    padding-bottom: 30px;
+    text-align: center;
+    margin-top: 30px;
+    margin-left: 200px;
+    margin-right: 200px;
+
+
 }
 
 .produits{
@@ -161,19 +172,22 @@ input {
     padding: 10px; 
     border: none;
     border-bottom: solid 2px  green;
+    width: 200px;
 }
 
-button.submit {
+button.submit, button.delete {
     background-color: rgb(0, 82, 0);
     border-radius: 40px;
-    width: 10%;
+    width: 15%;
     padding-top: 10px;
     font-weight: bold;
     padding-bottom: 14px;    
     color: white;
     box-shadow: 3px 3px 10px -3px rgb(210, 209, 209);
-    
-    
+}
+
+button.submit{
+    margin-right: 20px;
 }
 
 button.submit:hover {
