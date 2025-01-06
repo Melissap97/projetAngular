@@ -13,14 +13,22 @@ import { OnInit } from '@angular/core';
 })
 export class ProduitsComponent implements OnInit {
  pageTitle:string = 'Angular HTTP Client';
- users = new Array<any>();
+ products = new Array<any>();
 
   constructor(private httpService: HttpService) { }
 
-  ngOnInit(): void {
-    this.httpService.getUsers().subscribe((data)=>{
-      this.users = data;
-    })
+  ngOnInit(){
+    let authBody= {"username":"admin","password":"pwd"}
+  
+    this.httpService.login(authBody).subscribe(value => {
+      console.log(value)
+      localStorage.setItem("token", value.token)
+  
+      this.httpService.getProducts().subscribe(value => {
+        console.table(value)
+      })
+  
+    });
   }
 
  private router = inject(Router);

@@ -43,14 +43,14 @@
     <tr>
         <th>Id</th>
         <th>Name</th>
-        <th>Email</th>
-        <th>Phone number</th>
+        <th>Stock</th>
+       
     </tr>
-    <tr *ngFor="let user of users">
-        <td>{{user.id}}</td>
-        <td>{{user.name}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.phone}}</td>
+    <tr *ngFor="let product of products">
+        <td>{{product.id}}</td>
+        <td>{{product.name}}</td>
+        <td>{{product.stock}}</td>
+        
     </tr>
 </table>
 
