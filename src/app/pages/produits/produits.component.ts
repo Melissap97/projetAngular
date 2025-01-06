@@ -1,20 +1,29 @@
 import { HttpClient } from '@angular/common/http';
-import { HttpService } from './../services/http.service';
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { HttpService } from '../services/http.service';
 
 @Component({
   selector: 'app-produits',
   templateUrl: './produits.component.html',
-  imports: [CommonModule],
+  imports: [CommonModule,],
   styleUrls: ['./produits.component.css']
 })
-export class ProduitsComponent implements OnInit{
+export class ProduitsComponent {
 
-  constructor(private HttpClient: HttpClient) { }
+  constructor(private apiClient: HttpService) {}
+
+  posts: any[]= [];
+ 
+  ngOnInit(): void {
+    this.apiClient.getPosts().subscribe((data) => {
+    this.posts = data;
+    console.table(data);
+    });
+    
+
+  }
 
   private getHeaders():Headers {
     let header = new Headers({
@@ -39,20 +48,6 @@ pageUsers() {
   this.router.navigate(['/users']);
 }
   
- private apiUrl = 'http://localhost:4200/api/products'; 
- getPosts(): Observable<any[]> {
- return this.HttpClient.get<any[]>(this.apiUrl);
- }
- 
-  posts: any[] = [];
 
-  ngOnInit(): void {
-    this.getPosts().subscribe((data) => {
-    this.posts = data;
-    console.table(data);
-    });
-    
-
-  }
 }
 

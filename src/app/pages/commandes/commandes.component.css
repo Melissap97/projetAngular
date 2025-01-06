@@ -147,6 +147,49 @@ button:hover {
     margin: 40px 50px  50px 50px;
 }
 
+.formulaire{
+    border: solid 2px green;
+    padding-bottom: 30px;
+    text-align: center;
+    margin-top: 30px;
+    margin-left: 300px;
+    margin-right: 300px;
+
+}
+
+label {
+    font-style: italic;
+}
+
+input {
+    margin: 15px;
+    padding: 10px;
+    border: none;
+    border-bottom: solid 2px green;
+    width: 400px;
+   
+}
+
+button.submit, button.delete {
+    background-color: rgb(0, 82, 0);
+    border-radius: 40px;
+    width: 15%;
+    padding-top: 10px;
+    font-weight: bold;
+    padding-bottom: 14px;    
+    color: white;
+    box-shadow: 3px 3px 10px -3px rgb(210, 209, 209);
+    margin: 30px;
+}
+
+button.submit{
+    margin-right: 20px;
+}
+
+button.submit:hover, button.delete:hover {
+    background-color: green;
+}
+
 
 footer { 
     background-color: rgb(0, 82, 0);
