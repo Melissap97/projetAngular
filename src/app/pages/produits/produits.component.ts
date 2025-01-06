@@ -3,35 +3,25 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { HttpService } from '../services/http.service';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-produits',
   templateUrl: './produits.component.html',
-  imports: [CommonModule,],
+  imports: [CommonModule],
   styleUrls: ['./produits.component.css']
 })
-export class ProduitsComponent {
+export class ProduitsComponent implements OnInit {
+ pageTitle:string = 'Angular HTTP Client';
+ users = new Array<any>();
 
-  constructor(private apiClient: HttpService) {}
+  constructor(private httpService: HttpService) { }
 
-  posts: any[]= [];
- 
   ngOnInit(): void {
-    this.apiClient.getPosts().subscribe((data) => {
-    this.posts = data;
-    console.table(data);
-    });
-    
-
+    this.httpService.getUsers().subscribe((data)=>{
+      this.users = data;
+    })
   }
-
-  private getHeaders():Headers {
-    let header = new Headers({
-      'Content-Type': 'application/json'
-    });
- 
-    return header;
- }
 
  private router = inject(Router);
 

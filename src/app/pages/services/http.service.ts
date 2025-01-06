@@ -8,13 +8,12 @@ import { map, Observable } from 'rxjs';
 })
 export class HttpService {
 
-  constructor(private httpClient: HttpClient) { }
+   constructor(private http: HttpClient) {}
 
-  private apiUrl = 'http://localhost:3000/api/products';
-  getPosts(): Observable<any[]> {
-  return this.httpClient.get<any[]>(this.apiUrl);
-  }
-
+   getUsers():Observable<any>{
+    const url = 'https://jsonplaceholder.typicode.com/users';
+    return this.http.get(url);
+   }
 
   
 

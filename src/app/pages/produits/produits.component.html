@@ -38,13 +38,26 @@
      <h2>Liste des produits:</h2>
  </div>
 
- <li *ngFor="let post of posts">{{ post }}</li>
+<h1>{{pageTitle}}</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone number</th>
+    </tr>
+    <tr *ngFor="let user of users">
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.phone}}</td>
+    </tr>
+</table>
 
  <div class ="formulaire">
  <div class="liste">
      <h2>Ajouter ou modifier un produit</h2>
  </div>
- 
  <form>
      <input name="Produit" type="text" placeholder="Ajouter un produit"/> <br>
     <input name="Produit" type="text" placeholder="Modifier un produit"/> <br>
