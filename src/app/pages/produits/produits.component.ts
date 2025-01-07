@@ -12,7 +12,6 @@ import { OnInit } from '@angular/core';
   styleUrls: ['./produits.component.css']
 })
 export class ProduitsComponent implements OnInit {
- pageTitle:string = 'Angular HTTP Client';
  products = new Array<any>();
 
   constructor(private httpService: HttpService) { }
@@ -25,7 +24,8 @@ export class ProduitsComponent implements OnInit {
       localStorage.setItem("token", value.token)
   
       this.httpService.getProducts().subscribe(value => {
-        console.table(value)
+        console.table(value);
+        this.products = value;
       })
   
     });

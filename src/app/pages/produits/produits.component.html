@@ -38,19 +38,18 @@
      <h2>Liste des produits:</h2>
  </div>
 
-<h1>{{pageTitle}}</h1>
+
 <table>
     <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Stock</th>
+        <th>Id:</th>
+        <th>Name:</th>
+        <th>Stock:</th>
        
     </tr>
     <tr *ngFor="let product of products">
         <td>{{product.id}}</td>
         <td>{{product.name}}</td>
-        <td>{{product.stock}}</td>
-        
+        <td>{{product.stock}}</td>   
     </tr>
 </table>
 

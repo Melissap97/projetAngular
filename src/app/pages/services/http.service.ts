@@ -16,7 +16,7 @@ export class HttpService {
 
   getProducts(){
     const token = localStorage.getItem("token")
-
+   
     if(!token){
       throw new Error ('No authentification token found');
     }
@@ -24,6 +24,29 @@ export class HttpService {
     const headers = { Authorization : token}
     return this.httpClient.get<any>("http://localhost:3000/api/products", {headers})
   }
+
+  getOrders(){
+    const token = localStorage.getItem("token")
+   
+    if(!token){
+      throw new Error ('No authentification token found');
+    }
+    
+    const headers = { Authorization : token}
+    return this.httpClient.get<any>("http://localhost:3000/api/orders", {headers})
+  }
+
+  getUsers(){
+    const token = localStorage.getItem("token")
+   
+    if(!token){
+      throw new Error ('No authentification token found');
+    }
+    
+    const headers = { Authorization : token}
+    return this.httpClient.get<any>("http://localhost:3000/api/users", {headers})
+  }
+
 
   
 
