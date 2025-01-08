@@ -134,7 +134,7 @@ button:hover {
 
 .image {
     background-image: url("/jungle4.jpg");
-    height:450px;
+    height:600px;
     margin: 0;
     background-repeat: no-repeat;
     background-size: cover;
@@ -200,4 +200,10 @@ footer {
     height: 100px;
     padding-top:50px;
     
+}
+
+@media (max-width: 1300px) {
+    .image{
+        height: 401px;
+    }
 }

@@ -20,7 +20,7 @@
           <button (click)="pageCommandes()"><h2>Commandes </h2></button>
       </div>
       <div class="hoverRight">
-          <button class ="pageButton" (click)="pageUsers()"><h2>Users</h2></button> 
+          <button class ="pageButton" (click)="pageUsers()"><h2>Clients</h2></button> 
       </div>
   </nav> 
    
@@ -35,32 +35,36 @@
    <main>
    <div class="utilisateurs">
    <div class="liste">
-      <h2>Liste des utilisateurs:</h2>
+      <h2>Liste des clients:</h2>
   </div>
   
   <table>
     <tr>
         <th>Id:</th>
-        <th>Userame:</th>
-        <th>Role:</th>
-        <th>Password:</th>
+        <th>Nom:</th>
+        <th>Email:</th>
+        <th>Téléphone:</th>
+        <th>Adresse:</th>
+        <th>Commandes</th>
        
     </tr>
     <tr *ngFor="let user of users">
         <td>{{user.id}}</td>
-        <td>{{user.username}}</td>
-        <td>{{user.role}}</td>
-        <td>{{user.password}}</td>   
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.phone}}</td>   
+        <td>{{user.address}}</td>   
+        <td>{{user.orders}}</td>   
     </tr>
 </table>
 
    <div class ="formulaire">
     <div class="liste">
-        <h2>Créer ou modifier les informations <br> des utilisateurs</h2>
+        <h2>Créer ou modifier les informations <br> des clients</h2>
     </div>
     <form>
-        <input name="Produit" type="text" placeholder="Créer un utilisateur"/> <br>
-       <input name="Produit" type="text" placeholder="Modifier les informations d'un utilisateur"/> <br>
+        <input name="Produit" type="text" placeholder="Créer un client"/> <br>
+       <input name="Produit" type="text" placeholder="Modifier les informations d'un client"/> <br>
        <button type="submit" class="submit">Envoyer</button>
        <button type="submit" class="delete">Supprimer</button>
    </form>
