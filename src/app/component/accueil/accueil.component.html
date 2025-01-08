@@ -1,1 +1,67 @@
-<p>accueil works!</p>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="image">
+        <header>
+            <div class="login">
+                <h2 (click)="pageConnexion()">Connexion</h2>
+            </div>
+            <nav>
+                <div class="hoverLeft">
+                    <h2>Produits </h2>
+                </div>
+                <div class="hoverMiddle">
+                    <h2>Commandes </h2>
+                </div>
+                <div class="hoverRight">
+                    <h2>Users</h2>
+                </div>
+            </nav>
+
+            <div class="titre">
+                <h1> Projet Angular</h1>
+                <h3> Bienvenue</h3>
+            </div>
+
+        </header>
+    </div>
+
+    <main>
+        <div class="produits">
+            <div class="liste">
+                <h2>Liste de commandes par client:</h2>
+                <tr *ngFor="let product of products">
+                    <td>{{product.id}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.stock}}</td>
+                
+                </tr>
+
+                <tr *ngFor="let user of users">
+                    <td>{{user.id}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.role}}</td>
+                    <td>{{user.password}}</td>
+                </tr>
+            </div>
+            <div class="liste">
+                <h2>Liste des commandes par produits:</h2>
+            </div>
+
+
+
+        </div>
+    </main>
+</body>
+
+
+<footer>
+    <p>© Adrien & Melissa 🦆</p>
+</footer>
