@@ -55,7 +55,7 @@ export class HttpService {
     }
     
     const headers = { Authorization : token}
-    return this.httpClient.post("http://localhost:3000/api/products", product);
+    return this.httpClient.post("http://localhost:3000/api/products",  product, { headers });
   }
 }
   
