@@ -59,10 +59,12 @@
      <h2>Ajouter ou modifier un produit</h2> <br>
  </div>
  <form (ngSubmit)="productSubmit()">
-     <input [(ngModel)]="productName.name" name="Ajouter produit" type="text" placeholder="Ajouter un produit"/> <br>
+     
+    <input [(ngModel)]="productInfo.name" name="Ajouter un produit" type="text" placeholder="Ajouter un produit"/> <br>
+    <input [(ngModel)]="productInfo.stock" name="Ajouter une quantité" type="text" placeholder="Ajouter une quantité"/> <br>
     <input name="Modifier produit" type="text" placeholder="Modifier un produit"/> <br>
     <button  class="submit">Envoyer</button>
-    <button type="submit" class="delete">Supprimer</button>
+    <button  type="submit" class="delete">Supprimer</button>
 </form>
  </div> 
 </div>

@@ -15,9 +15,11 @@ import { FormsModule } from '@angular/forms';
 })
 export class ProduitsComponent implements OnInit {
  products = new Array<any>();
- productName = {
+ productInfo = {
   name: '',
+  stock:''
  };
+
 
   constructor(private httpService: HttpService) { }
 
@@ -43,13 +45,16 @@ export class ProduitsComponent implements OnInit {
       console.log(value)
       localStorage.setItem("token", value.token)
   
-      this.httpService.addProduct(this.productName).subscribe(
+      this.httpService.addProduct(this.productInfo).subscribe(
         response => {
-          console.log('Success:', response);
-          this.productName = response;
-        },
+          this.productInfo = response; 
+          window.location.reload();
+        }
       );
+      
     });
+
+    
   }
 
  
