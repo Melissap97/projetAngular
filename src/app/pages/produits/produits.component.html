@@ -56,17 +56,28 @@
 
  <div class ="formulaire">
  <div class="liste">
-     <h2>Ajouter ou modifier un produit</h2> <br>
+     <h2>Ajouter un produit</h2> <br>
  </div>
  <form (ngSubmit)="productSubmit()">
      
     <input [(ngModel)]="productInfo.name" name="Ajouter un produit" type="text" placeholder="Ajouter un produit"/> <br>
     <input [(ngModel)]="productInfo.stock" name="Ajouter une quantité" type="number" placeholder="Ajouter une quantité"/> <br>
-    <input name="Modifier produit" type="text" placeholder="Modifier un produit"/> <br>
     <button  class="submit">Envoyer</button>
     
 </form >
 </div>
+
+<div class ="formulaire">
+    <div class="liste">
+        <h2>Modifier un produit</h2> <br>
+    </div>
+    <form (ngSubmit)="productModify()">
+    <input [(ngModel)]="productInfo.id" name="Selectionner l'Id du produit" type="number" placeholder="Selectionner l'Id du produit"/> <br>
+       <input [(ngModel)]="productInfo.name" name="Modifier un produit" type="text" placeholder="Modifier un produit"/> <br>
+       <button  class="submit">Envoyer</button>
+       
+   </form >
+   </div>
 
 <div class ="formulaire">
 <div class ="liste">

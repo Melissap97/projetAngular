@@ -57,6 +57,27 @@ export class ProduitsComponent implements OnInit {
 
   }
 
+  productModify() {
+    
+    let authBody= {"username":"admin","password":"pwd"}
+  
+    this.httpService.login(authBody).subscribe(value => {
+      console.log(value)
+      localStorage.setItem("token", value.token)
+  
+      this.httpService.modifyProduct(this.productInfo).subscribe(
+        response => {
+          this.productInfo = response; 
+          window.location.reload();
+        }
+      );
+      
+    });
+
+  }
+
+  
+
   productDelete() {
     let authBody= {"username":"admin","password":"pwd"}
   
