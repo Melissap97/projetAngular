@@ -17,7 +17,8 @@ export class ProduitsComponent implements OnInit {
  products = new Array<any>();
  productInfo = {
   name: '',
-  stock:''
+  stock:'',
+  id: ''
  };
 
 
@@ -54,9 +55,25 @@ export class ProduitsComponent implements OnInit {
       
     });
 
-    
   }
 
+  productDelete() {
+    let authBody= {"username":"admin","password":"pwd"}
+  
+    this.httpService.login(authBody).subscribe(value => {
+      console.log(value)
+      localStorage.setItem("token", value.token)
+  
+      this.httpService.deleteProduct(this.productInfo).subscribe(
+        response => {
+          this.productInfo = response; 
+          window.location.reload();
+        }
+      );
+      
+    });
+
+  }
  
 
  private router = inject(Router);

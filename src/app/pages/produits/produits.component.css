@@ -145,18 +145,22 @@ button:hover {
 
 .liste, .formulaire{
     text-align: center;
+    padding-bottom: 50px;
 }
 
+.liste{
+    padding-top: 40px;
+}
 table {
     border-collapse: collapse;
-    margin: 25px 0;
     font-size: 0.9em;
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    margin-left: 300px;
-    margin-right: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    width:100%
     
-    
+
 }
 
 thead tr {
@@ -168,8 +172,7 @@ thead tr {
 
 th,td {
     padding: 12px 15px;
-    padding-right: 150px;
-    padding-left: 200px;
+   
 }
 
 tr {
@@ -185,14 +188,15 @@ tr:nth-of-type(even) {
     padding-bottom: 30px;
     text-align: center;
     margin-top: 30px;
-    margin-left: 300px;
-    margin-right: 300px;
+    margin-left: auto;
+    margin-right: auto;
     
 
 }
 
 .produits{
     margin: 40px 50px  50px 50px;
+    
 }
 
 label {

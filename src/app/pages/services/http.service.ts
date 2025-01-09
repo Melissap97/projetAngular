@@ -57,15 +57,17 @@ export class HttpService {
     const headers = { Authorization : token}
     return this.httpClient.post("http://localhost:3000/api/products",  product, { headers });
   }
-  addStock(product: any): Observable<any> {
+  
+
+  deleteProduct(product: any): Observable<any> {
     const token = localStorage.getItem("token")
    
     if(!token){
       throw new Error ('No authentification token found');
     }
-    
+
     const headers = { Authorization : token}
-    return this.httpClient.post("http://localhost:3000/api/products",  product, { headers });
+    return this.httpClient.delete(`http://localhost:3000/api/products/${product.id}`, { headers } );
   }
 }
   
