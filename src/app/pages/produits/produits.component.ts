@@ -46,7 +46,7 @@ export class ProduitsComponent implements OnInit {
       console.log(value)
       localStorage.setItem("token", value.token)
   
-      this.httpService.addProduct(this.productInfo).subscribe(
+      this.httpService.addProducts(this.productInfo).subscribe(
         response => {
           this.productInfo = response; 
           window.location.reload();
@@ -65,7 +65,7 @@ export class ProduitsComponent implements OnInit {
       console.log(value)
       localStorage.setItem("token", value.token)
   
-      this.httpService.modifyProduct(this.productInfo).subscribe(
+      this.httpService.modifyProducts(this.productInfo).subscribe(
         response => {
           this.productInfo = response; 
           window.location.reload();
@@ -85,7 +85,7 @@ export class ProduitsComponent implements OnInit {
       console.log(value)
       localStorage.setItem("token", value.token)
   
-      this.httpService.deleteProduct(this.productInfo).subscribe(
+      this.httpService.deleteProducts(this.productInfo).subscribe(
         response => {
           this.productInfo = response; 
           window.location.reload();
@@ -109,7 +109,7 @@ pageCommandes() {
 }
 
 pageUsers() {
-  this.router.navigate(['/users']);
+  this.router.navigate(['/clients']);
 }
   
 

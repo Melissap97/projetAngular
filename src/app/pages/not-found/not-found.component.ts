@@ -20,7 +20,7 @@ export class NotFoundComponent {
     }
     
     pageUsers() {
-      this.router.navigate(['/users']);
+      this.router.navigate(['/clients']);
     }
    
  

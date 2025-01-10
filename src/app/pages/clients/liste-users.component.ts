@@ -1,24 +1,25 @@
+import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from '../services/http.service';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-commandes',
-  templateUrl: './commandes.component.html',
-  styleUrls: ['./commandes.component.css'],
+  selector: 'app-liste-users',
+  templateUrl: './liste-users.component.html',
+  styleUrls: ['./liste-users.component.css'],
   imports: [CommonModule, FormsModule],
 })
-export class CommandesComponent {
-  orders = new Array<any>();
-  orderInfo = {
+export class ListeUsersComponent  {
+  customers = new Array<any>();
+  customerInfo = {
     id: '',
-    productId:'',
-    quantity: '',
-    userId: '',
-    createdAt: ''
+    name:'',
+    email: '',
+    phone: '',
+    address: ''
    };
+
   
     constructor(private httpService: HttpService) { }
   
@@ -29,15 +30,15 @@ export class CommandesComponent {
         console.table(value)
         localStorage.setItem("token", value.token)
     
-        this.httpService.getOrders().subscribe(value => {
+        this.httpService.getCustomers().subscribe(value => {
           console.table(value);
-          this.orders = value;
+          this.customers = value;
         })
     
       });
     }
 
-    orderSubmit() {
+    customerSubmit() {
     
       let authBody= {"username":"admin","password":"pwd"}
     
@@ -45,9 +46,9 @@ export class CommandesComponent {
         console.log(value)
         localStorage.setItem("token", value.token)
     
-        this.httpService.addOrders(this.orderInfo).subscribe(
+        this.httpService.addCustomers(this.customerInfo).subscribe(
           response => {
-            this.orderInfo = response; 
+            this.customerInfo = response; 
             window.location.reload();
           }
         );
@@ -55,43 +56,49 @@ export class CommandesComponent {
       });
   
     }
+  
+    customerModify() {
+      
+      let authBody= {"username":"admin","password":"pwd"}
+    
+      this.httpService.login(authBody).subscribe(value => {
+        console.log(value)
+        localStorage.setItem("token", value.token)
+    
+        this.httpService.modifyCustomers(this.customerInfo).subscribe(
+          response => {
+            this.customerInfo = response; 
+            window.location.reload();
+          }
+        );
+        
+      });
+  
+    }
+  
+    
+  
+    customerDelete() {
+      let authBody= {"username":"admin","password":"pwd"}
+    
+      this.httpService.login(authBody).subscribe(value => {
+        console.log(value)
+        localStorage.setItem("token", value.token)
+    
+        this.httpService.deleteCustomers(this.customerInfo).subscribe(
+          response => {
+            this.customerInfo = response; 
+            window.location.reload();
+          }
+        );
+        
+      });
+  
+    }
+  
 
-    orderModify() {
-    
-      let authBody= {"username":"admin","password":"pwd"}
-    
-      this.httpService.login(authBody).subscribe(value => {
-        console.log(value)
-        localStorage.setItem("token", value.token)
-    
-        this.httpService.modifyOrders(this.orderInfo).subscribe(
-          response => {
-            this.orderInfo = response; 
-            window.location.reload();
-          }
-        );
-        
-      });
-  
-    }
-    
-    orderDelete() {
-      let authBody= {"username":"admin","password":"pwd"}
-    
-      this.httpService.login(authBody).subscribe(value => {
-        console.log(value)
-        localStorage.setItem("token", value.token)
-    
-        this.httpService.deleteOrders(this.orderInfo).subscribe(
-          response => {
-            this.orderInfo = response; 
-            window.location.reload();
-          }
-        );
-        
-      });
-  
-    }
+
+
   private router = inject(Router);
   
   
@@ -106,5 +113,6 @@ export class CommandesComponent {
   pageUsers() {
     this.router.navigate(['/clients']);
   }
+ 
 
 }
