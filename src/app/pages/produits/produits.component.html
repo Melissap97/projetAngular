@@ -58,11 +58,17 @@
  <div class="liste">
      <h2>Ajouter un produit</h2> <br>
  </div>
- <form (ngSubmit)="productSubmit()">
+ <form #addForm="ngForm" (ngSubmit)="productSubmit()">
      
-    <input [(ngModel)]="productInfo.name" name="Ajouter un produit" type="text" placeholder="Ajouter un produit"/> <br>
-    <input [(ngModel)]="productInfo.stock" name="Ajouter une quantité" type="number" placeholder="Ajouter une quantité"/> <br>
-    <button  class="submit">Envoyer</button>
+    <input  class = "form-control" [(ngModel)]="productInfo.name" name="Ajouter un produit" required #ajouterProduit="ngModel" type="text" placeholder="Ajouter un produit"/> <br>
+    <div *ngIf="ajouterProduit.invalid  && ajouterQuantite.touched  ">
+        <small>Le nom du produit est requis.</small>
+    </div>
+    <input class = "form-control"[(ngModel)]="productInfo.stock" name="Ajouter une quantité" min="1" required #ajouterQuantite="ngModel" type="number" placeholder="Ajouter une quantité"/> <br>
+    <div *ngIf="ajouterQuantite.invalid &&  ajouterProduit.touched ">
+        <small>La quantité du produit est requise.</small>
+    </div>
+    <button  class="submit"  [disabled]="addForm.invalid">Envoyer</button>
     
 </form >
 </div>
@@ -71,9 +77,14 @@
     <div class="liste">
         <h2>Modifier un produit</h2> <br>
     </div>
-    <form (ngSubmit)="productModify()">
-    <input [(ngModel)]="productInfo.id" name="Selectionner l'Id du produit" type="number" placeholder="Selectionner l'Id du produit"/> <br>
+       <form #modifyForm="ngForm" (ngSubmit)="productModify()">
+
+       <input class = "form-control" [(ngModel)]="productInfo.id" name="Selectionner l'Id du produit" min="1" required #modifierId="ngModel" type="number" placeholder="Selectionner l'Id du produit"/> <br>
+       <div *ngIf="modifierId.invalid && modifierId.touched ">
+        <small>L'Id du produit est requis.</small>
+       </div> 
        <input [(ngModel)]="productInfo.name" name="Modifier un produit" type="text" placeholder="Modifier un produit"/> <br>
+       <input class = "form-control" [(ngModel)]="productInfo.stock" name="Modifier le stock du produit" min="1" required #modifierStock="ngModel"  type="number" placeholder="Modifier le stock du produit"/> <br>
        <button  class="submit">Envoyer</button>
        
    </form >
@@ -83,7 +94,7 @@
 <div class ="liste">
     <h2>Supprimer un produit</h2> <br>
 <form (ngSubmit)="productDelete()">
-    <input [(ngModel)]="productInfo.id" name="Id un produit" type="number" placeholder="Id du produit"/><br>
+    <input [(ngModel)]="productInfo.id" name="Id un produit" type="number" min="1" placeholder="Id du produit"/><br>
     <button  type="submit" class="delete">Supprimer</button> 
 
 </form>
