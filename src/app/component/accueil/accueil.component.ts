@@ -66,7 +66,7 @@ ngOnInit(){
       this.orders = value.orders;
       this.customers = value.customers;
   
-      // Préparer les données combinées
+      
       this.customerOrders = this.customers.map(customer => {
         const customersOrders = this.orders.filter(order => order.userId === customer.id);
         return {
