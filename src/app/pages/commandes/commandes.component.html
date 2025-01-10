@@ -40,40 +40,72 @@
   
   
   <table>
+    <thead >
     <tr>
-        <th>Id:</th>
-        <th>Product Id:</th>
-        <th>Quantity:</th>
-        <th>User Id:</th>
-        <th>Created at:</th>
-       
+        <th>Id de la commande</th>
+        <th>Id du produit</th>
+        <th>Quantité</th>
+        <th>Id du client</th>
+        <th>Date de création</th>
     </tr>
+</thead>
     <tr *ngFor="let order of orders">
         <td>{{order.id}}</td>
         <td>{{order.productId}}</td>
-        <td>{{order.quantity}}</td>   
-        <td>{{order.userId}}</td> 
-        <td>{{order.createdAt}}</td> 
+        <td>{{order.quantity}}</td>
+        <td>{{order.userId}}</td>
+        <td>{{order.createdAt}}</td>       
     </tr>
 </table>
     
  
 
-  <div class ="formulaire">
+<div class ="formulaire">
     <div class="liste">
-        <h2>Ajouter ou modifier une commande</h2>
+        <h2>Ajouter une commande</h2> <br>
     </div>
-    <form>
-        <input name="Produit" type="text" placeholder="Ajouter une commande"/> <br>
-       <input name="Produit" type="text" placeholder="Modifier une commande"/> <br>
-       <button type="submit" class="submit">Envoyer</button>
-       <button type="submit" class="delete">Supprimer</button>
-   </form>
-    </div> 
+    <form #addForm="ngForm" (ngSubmit)="orderSubmit()">
+        
+       <input  class = "form-control" [(ngModel)]="orderInfo.productId" name="Ajouter l'Id du produit" min= "1" required #ajouterProduit="ngModel" type="number" placeholder="Ajouter l'Id d'un produit"/> <br>
+       <input class = "form-control"[(ngModel)]="orderInfo.quantity" name="Ajouter une quantité" min="1" required #ajouterQuantite="ngModel" type="number" placeholder="Ajouter une quantité"/> <br>
+       <input  class = "form-control" [(ngModel)]="orderInfo.userId" name="Ajouter l'Id du client" min= "1" required #ajouterClient="ngModel" type="number" placeholder="Ajouter l'Id du client"/> <br>
+       <button  class="submit">Envoyer</button>
+       
+   </form >
    </div>
    
-  </main>
-  </body>
+   <div class ="formulaire">
+       <div class="liste">
+           <h2>Modifier une commande</h2> <br>
+       </div>
+          <form #modifyForm="ngForm" (ngSubmit)="orderModify()">
+
+          <input class = "form-control" [(ngModel)]="orderInfo.id" name="Sélectionner l'Id de la commande à modifier" min="1" required #modifierId="ngModel" type="number" placeholder="Sélectionner l'Id de la commande à modifier"/> <br>
+          <input class = "form-control" [(ngModel)]="orderInfo.productId" name="Modifier l'Id du produit" min="1" required #modifierId="ngModel" type="number" placeholder="Modifier l'Id du produit"/> <br>
+          <input class = "form-control" [(ngModel)]="orderInfo.quantity" name="Modifier une quantité" min ="1" type="number" required #modifierQuantité="ngModel"placeholder="Modifier une quantité"/> <br>
+          <input class = "form-control" [(ngModel)]="orderInfo.userId" name="Modifier l'Id du client" min="1" required #modifierClient="ngModel"  type="number" placeholder="Modifier l'Id du client"/> <br>
+          <button  class="submit">Envoyer</button>
+          
+      </form >
+      </div>
+   
+   <div class ="formulaire">
+   <div class ="liste">
+       <h2>Supprimer une commande</h2> <br>
+   <form (ngSubmit)="orderDelete()">
+    <input class = "form-control" [(ngModel)]="orderInfo.id" name="Sélectionner l'Id de la commande à supprimer" min="1" required #modifierId="ngModel" type="number" placeholder="Sélectionner l'Id de la commande à supprimer"/> <br>
+    <div *ngIf="modifierId.invalid && modifierId.touched ">
+     <small>L'Id du produit est requis.</small>
+    </div> 
+    <button  class="submit">Envoyer</button>
+   
+   </form>
+     </div>
+   </div>
+   
+   </div>
+    </main>
+    </body>
   
   
   <footer> 

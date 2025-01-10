@@ -58,6 +58,17 @@ export class HttpService {
     return this.httpClient.post("http://localhost:3000/api/products",  product, { headers });
   }
 
+  addOrders(order: any): Observable<any> {
+    const token = localStorage.getItem("token")
+   
+    if(!token){
+      throw new Error ('No authentification token found');
+    }
+    
+    const headers = { Authorization : token}
+    return this.httpClient.post("http://localhost:3000/api/orders",  order, { headers });
+  }
+
   modifyProduct(product: any): Observable<any> {
     const token = localStorage.getItem("token")
    
@@ -68,6 +79,18 @@ export class HttpService {
     const headers = { Authorization : token}
     return this.httpClient.put(`http://localhost:3000/api/products/${product.id}`,  product, { headers });
   }
+
+  modifyOrders(order: any): Observable<any> {
+    const token = localStorage.getItem("token")
+   
+    if(!token){
+      throw new Error ('No authentification token found');
+    }
+    
+    const headers = { Authorization : token}
+    return this.httpClient.put(`http://localhost:3000/api/orders/${order.id}`,  order, { headers });
+  }
+  
   
 
   deleteProduct(product: any): Observable<any> {
@@ -79,6 +102,17 @@ export class HttpService {
 
     const headers = { Authorization : token}
     return this.httpClient.delete(`http://localhost:3000/api/products/${product.id}`, { headers } );
+  }
+
+  deleteOrders(order: any): Observable<any> {
+    const token = localStorage.getItem("token")
+   
+    if(!token){
+      throw new Error ('No authentification token found');
+    }
+
+    const headers = { Authorization : token}
+    return this.httpClient.delete(`http://localhost:3000/api/orders/${order.id}`, { headers } );
   }
 }
   
