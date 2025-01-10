@@ -14,6 +14,7 @@
                 <h2 (click)="pageConnexion()">Connexion</h2>
             </div>
             <nav>
+                
                 <div class="hoverLeft">
                     <h2>Produits </h2>
                 </div>
@@ -21,7 +22,7 @@
                     <h2>Commandes </h2>
                 </div>
                 <div class="hoverRight">
-                    <h2>Users</h2>
+                    <h2>Clients</h2>
                 </div>
             </nav>
 
@@ -36,23 +37,44 @@
     <main>
         <div class="produits">
             <div class="liste">
-                <h2>Liste de commandes par client:</h2>
-                <tr *ngFor="let product of products">
-                    <td>{{product.id}}</td>
-                    <td>{{product.name}}</td>
-                    <td>{{product.stock}}</td>
-                
-                </tr>
+                <h2>Liste de commandes par clients :</h2>
+                <div class="commandes">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nom des clients</th>
+                            <th>Nombre de commandes réalisés</th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let customer of customerOrders">
+                            <td>{{ customer.name }}</td>
+                            <td>{{ customer.totalOrdersId }}</td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
 
-                <tr *ngFor="let user of users">
-                    <td>{{user.id}}</td>
-                    <td>{{user.username}}</td>
-                    <td>{{user.role}}</td>
-                    <td>{{user.password}}</td>
-                </tr>
-            </div>
-            <div class="liste">
-                <h2>Liste des commandes par produits:</h2>
+
+                </div>
+                <h2 class = "produitsH2">Liste de commandes par produits :</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nom des produits</th>
+                            <th>Nombre de commandes par produits</th>
+                
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of productsOrders">
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.totalOrdersId }}</td>
+                
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
 

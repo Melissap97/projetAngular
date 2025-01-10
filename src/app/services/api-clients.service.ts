@@ -19,7 +19,29 @@ export class ApiClientsService {
   }
 
   //Methode récupérer les utilisateurs
-  getProducts(): Observable<any[]> {
+  getOrders(): Observable<any[]> {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      throw new Error("Aucun token authentifié");
+    }
+
+     const headers = { Authorization : token}
+    return this.http.get<any[]>("http://localhost:3000/api/orders", { headers });
+  }
+
+  getCustomers(): Observable<any[]> {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      throw new Error("Aucun token authentifié");
+    }
+
+     const headers = { Authorization : token}
+    return this.http.get<any[]>("http://localhost:3000/api/customers", { headers });
+  }
+
+  getProduits(): Observable<any[]> {
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -30,7 +52,20 @@ export class ApiClientsService {
     return this.http.get<any[]>("http://localhost:3000/api/products", { headers });
   }
 
-  getUsers(): Observable<any[]> {
+  // Méthode pour récupérer les posts
+  postPosts(data: any): Observable<any[]> {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      throw new Error("Aucun token authentifié");
+    }
+
+     const headers = { Authorization : token}
+    return this.http.post<any[]>("http://localhost:3000/api/auth/login", data, { headers });
+  }
+  
+
+  getUser() : Observable<any[]> {
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -39,18 +74,6 @@ export class ApiClientsService {
 
      const headers = { Authorization : token}
     return this.http.get<any[]>("http://localhost:3000/api/users", { headers });
-  }
-
-  // Méthode pour récupérer les posts
-  getPosts(): Observable<any[]> {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      throw new Error("Aucun token authentifié");
-    }
-
-     const headers = { Authorization : token}
-    return this.http.post<any[]>("http://localhost:3000/api/auth/login", { headers });
   }
 
 }

@@ -11,17 +11,27 @@
     <div class="connexion">
         <i class="fas fa-users" id="userSign"></i>
         <h1>Connexion</h1>
-        <form class="formulaire" ngSubmit="onSubmit()">
+
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="formulaire">
             <div class="nameGroup">
                 <label for="name"><i class="fas fa-user"></i></label>
-                <input class="form-control" id="nom" name="nom">
+                <input class = "form-control" id="nom" name="nom" [(ngModel)]="nom" required #nameRef="ngModel" />
+                <div *ngIf="nameRef.invalid && nameRef.touched ">
+                    <small>Le nom est requis.</small>
+                </div>
+                <div *ngIf="!isNomInvalide() && nameRef.touched">
+                    <small>Le nom saisi n'est pas autorisé.</small>
+                </div>
             </div>
             <div class="passwordGroup">
                 <label for="password"><i class="fas fa-lock"></i></label>
-                <input type="password" class="form-control" id="password" name="password">
+                <input class="form-control"  type="password" id="password" name="password" [(ngModel)]="password" 
+                    #passwordRef="ngModel" />
             </div>
-            <button type="submit" class="btn btn-primary" (click)="pageAccueil()">Connexion</button>
+            <button type="submit" [disabled]="!isPasswordInvalide() && !isNomInvalide()" (click)="pageAccueil()" class="btn btn-primary" (submit)="productSubmit()">Se connecter</button>
+            
         </form>
+        
     </div>
     </main>
 </body>
