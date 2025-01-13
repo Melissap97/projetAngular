@@ -29,6 +29,7 @@ body {
     margin: 0px;
     padding: 0px;
 }
+
 h3{
     font-style: italic;
     font-size: 25px;
@@ -47,7 +48,7 @@ nav {
     margin: 0 auto;
 }
 
-.hoverLeft, .hoverMiddle, .hoverRight {
+.hoverLeft, .hoverMiddle, .hoverRight, .hoverExtremRight {
     color: green;
     height: 70px;
     width: 100%;
@@ -59,65 +60,27 @@ nav {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
 }
+
 .hoverRight {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
-    border-top-right-radius: 40px;
-        border-bottom-right-radius: 40px;
 }
 
-.hoverLeft h2, .hoverMiddle h2, .hoverRight h2{
+.hoverExtremRight {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+.hoverLeft h2, .hoverMiddle h2, .hoverRight h2, .hoverExtremRight h2{
     margin-top: 20px;
 }
 
 
-.hoverLeft:hover, .hoverMiddle:hover, .hoverRight:hover{
+.hoverLeft:hover, .hoverMiddle:hover, .hoverRight:hover, .hoverExtremRight:hover{
     background-color: rgb(0, 82, 0);
     color: white;
-}
-
-table {
-    border-collapse: collapse;
-    font-size: 0.9em;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    margin-left: auto;
-    margin-right: auto;
-    width:100%
-    
-
-}
-
-thead tr {
-    background-color: rgb(0, 82, 0);
-    color: #ffffff;
-    text-align: left;
-    
-}
-
-th,td {
-    padding: 12px 15px;
-   
-}
-
-tr {
-    border-bottom: 2px solid rgb(0, 82, 0);
-}
-
-tr:nth-of-type(even) {
-    background-color: #d4fac3;
-}
-
-
-.formulaire{
-    border: solid 2px green;
-    padding-bottom: 30px;
-    text-align: center;
-    margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    
-
 }
 
 
@@ -154,12 +117,58 @@ tr:nth-of-type(even) {
     background-size: cover;
 }
 
+
 .liste{
     text-align: center;
     margin: 30px;
 }
+table {
+    border-collapse: collapse;
+    font-size: 0.9em;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin-left: auto;
+    margin-right: auto;
+    width:100%
+    
 
+}
 
+thead tr {
+    background-color: rgb(0, 82, 0);
+    color: #ffffff;
+    text-align: left;
+    
+}
+
+th,td {
+    padding: 12px 15px;
+   
+}
+
+tr {
+    border-bottom: 2px solid rgb(0, 82, 0);
+}
+
+tr:nth-of-type(even) {
+    background-color: #d4fac3;
+}
+
+.formulaire{
+    border: solid 2px green;
+    padding-bottom: 30px;
+    text-align: center;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    
+
+}
+
+.produits{
+    margin: 40px 50px  50px 50px;
+    
+}
 
 label {
     font-style: italic;
@@ -171,6 +180,7 @@ input {
     border: none;
     border-bottom: solid 2px green;
     width: 400px;
+    
    
 }
 
@@ -184,6 +194,8 @@ button.submit, button.delete {
     color: white;
     box-shadow: 3px 3px 10px -3px rgb(210, 209, 209);
     margin: 30px;
+    cursor: pointer;
+    border: none;
 }
 
 button.submit{
@@ -194,11 +206,6 @@ button.submit:hover, button.delete:hover {
     background-color: green;
 }
 
-.utilisateurs{
-    margin: 40px 50px  50px 50px;
-}
-
-
 footer { 
     background-color: rgb(0, 82, 0);
     text-align: center;
@@ -207,6 +214,7 @@ footer {
     padding-top:50px;
     
 }
+
 
 @media (max-width: 1300px) {
     .image{

@@ -48,7 +48,7 @@ nav {
     margin: 0 auto;
 }
 
-.hoverLeft, .hoverMiddle, .hoverRight {
+.hoverLeft, .hoverMiddle, .hoverRight, .hoverExtremRight {
     color: green;
     height: 70px;
     width: 100%;
@@ -60,28 +60,29 @@ nav {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
 }
+
 .hoverRight {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
-    border-top-right-radius: 40px;
-        border-bottom-right-radius: 40px;
 }
 
-.hoverLeft h2, .hoverMiddle h2, .hoverRight h2{
+.hoverExtremRight {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+.hoverLeft h2, .hoverMiddle h2, .hoverRight h2, .hoverExtremRight h2{
     margin-top: 20px;
 }
 
 
-.hoverLeft:hover, .hoverMiddle:hover, .hoverRight:hover{
+.hoverLeft:hover, .hoverMiddle:hover, .hoverRight:hover, .hoverExtremRight:hover{
     background-color: rgb(0, 82, 0);
     color: white;
 }
 
-
-.hoverLeft:hover, .hoverMiddle:hover, .hoverRight:hover{
-    background-color: rgb(0, 82, 0);
-    color: white;
-}
 
 .login {
     justify-content: center;
@@ -116,13 +117,10 @@ nav {
     background-size: cover;
 }
 
-.liste, .formulaire{
-    text-align: center;
-    padding-bottom: 50px;
-}
 
 .liste{
-    padding-top: 40px;
+    text-align: center;
+    margin: 30px;
 }
 table {
     border-collapse: collapse;
@@ -196,6 +194,8 @@ button.submit, button.delete {
     color: white;
     box-shadow: 3px 3px 10px -3px rgb(210, 209, 209);
     margin: 30px;
+    cursor: pointer;
+    border: none;
 }
 
 button.submit{

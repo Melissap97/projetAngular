@@ -17,11 +17,11 @@ header {
 
 .titre {
     color: white;
-    text-shadow:rgb(0, 37, 2) 5px 0 10px;
+    display: inline-block;
+    margin-left: 50px;
+    text-shadow: rgb(0, 37, 2) 5px 0 10px;
     margin-top: 60px;
     font-size: large;
-    text-align: center;
-    margin-top: 100px;
 }
 
 
@@ -34,6 +34,7 @@ h3{
     font-size: 25px;
     font-weight: normal;
 }
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -82,6 +83,52 @@ nav {
 }
 
 
+
+table {
+    border-collapse: collapse;
+    font-size: 0.9em;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin-left: auto;
+    margin-right: auto;
+    width:100%
+    
+
+}
+
+thead tr {
+    background-color: rgb(0, 82, 0);
+    color: #ffffff;
+    text-align: left;
+    
+}
+
+th,td {
+    padding: 12px 15px;
+   
+}
+
+tr {
+    border-bottom: 2px solid rgb(0, 82, 0);
+}
+
+tr:nth-of-type(even) {
+    background-color: #d4fac3;
+}
+
+
+.formulaire{
+    border: solid 2px green;
+    padding-bottom: 30px;
+    text-align: center;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    
+
+}
+
+
 .login {
     justify-content: center;
     color: rgb(255, 255, 255);
@@ -109,7 +156,7 @@ nav {
 
 .image {
     background-image: url("/jungle4.jpg");
-    height:800px;
+    height:600px;
     margin: 0;
     background-repeat: no-repeat;
     background-size: cover;
@@ -120,8 +167,44 @@ nav {
     margin: 30px;
 }
 
-.produits{
-    margin: 50px;
+
+
+label {
+    font-style: italic;
+}
+
+input {
+    margin: 15px;
+    padding: 10px;
+    border: none;
+    border-bottom: solid 2px green;
+    width: 400px;
+   
+}
+
+button.submit, button.delete {
+    background-color: rgb(0, 82, 0);
+    border-radius: 40px;
+    width: 15%;
+    padding-top: 10px;
+    font-weight: bold;
+    padding-bottom: 14px;    
+    color: white;
+    margin: 30px;
+    cursor: pointer;
+    border: none;
+}
+
+button.submit{
+    margin-right: 20px;
+}
+
+button.submit:hover, button.delete:hover {
+    background-color: green;
+}
+
+.utilisateurs{
+    margin: 40px 50px  50px 50px;
 }
 
 

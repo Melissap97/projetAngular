@@ -25,6 +25,17 @@ export class HttpService {
     return this.httpClient.get<any>("http://localhost:3000/api/products", {headers})
   }
 
+  getUsers(){
+    const token = localStorage.getItem("token")
+   
+    if(!token){
+      throw new Error ('No authentification token found');
+    }
+    
+    const headers = { Authorization : token}
+    return this.httpClient.get<any>("http://localhost:3000/api/users", {headers})
+  }
+
   getOrders(){
     const token = localStorage.getItem("token")
    
@@ -56,6 +67,17 @@ export class HttpService {
     
     const headers = { Authorization : token}
     return this.httpClient.post("http://localhost:3000/api/customers",  customer, { headers });
+  }
+
+  addUsers(user: any): Observable<any> {
+    const token = localStorage.getItem("token")
+   
+    if(!token){
+      throw new Error ('No authentification token found');
+    }
+    
+    const headers = { Authorization : token}
+    return this.httpClient.post("http://localhost:3000/api/users",  user, { headers });
   }
 
   addProducts(product: any): Observable<any> {
@@ -91,6 +113,17 @@ export class HttpService {
     return this.httpClient.put(`http://localhost:3000/api/products/${product.id}`,  product, { headers });
   }
 
+  modifyUsers(user: any): Observable<any> {
+    const token = localStorage.getItem("token")
+   
+    if(!token){
+      throw new Error ('No authentification token found');
+    }
+    
+    const headers = { Authorization : token}
+    return this.httpClient.put(`http://localhost:3000/api/users/${user.id}`,  user, { headers });
+  }
+
   modifyCustomers(customer: any): Observable<any> {
     const token = localStorage.getItem("token")
    
@@ -123,6 +156,17 @@ export class HttpService {
 
     const headers = { Authorization : token}
     return this.httpClient.delete(`http://localhost:3000/api/customers/${customer.id}`, { headers } );
+  }
+
+  deleteUsers(user: any): Observable<any> {
+    const token = localStorage.getItem("token")
+   
+    if(!token){
+      throw new Error ('No authentification token found');
+    }
+
+    const headers = { Authorization : token}
+    return this.httpClient.delete(`http://localhost:3000/api/users/${user.id}`, { headers } );
   }
 
   deleteProducts(product: any): Observable<any> {

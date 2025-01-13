@@ -19,8 +19,11 @@ export class NotFoundComponent {
       this.router.navigate(['/commandes']);
     }
     
-    pageUsers() {
+    pageClients() {
       this.router.navigate(['/clients']);
+    }
+    pageUsers() {
+      this.router.navigate(['/users']);
     }
    
  

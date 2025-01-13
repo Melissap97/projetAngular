@@ -1,25 +1,25 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { HttpService } from '../services/http.service';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpService } from '../services/http.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-liste-users',
-  templateUrl: './liste-users.component.html',
-  styleUrls: ['./liste-users.component.css'],
+  selector: 'app-users',
   imports: [CommonModule, FormsModule],
+  templateUrl: './users.component.html',
+  styleUrl: './users.component.css'
 })
-export class ListeUsersComponent  {
-  customers = new Array<any>();
-  customerInfo = {
-    id: '',
-    name:'',
-    email: '',
-    phone: '',
-    address: ''
-   };
+export class UsersComponent implements OnInit {
 
+   users = new Array<any>();
+   userInfo = {
+    id: '',
+    username:'',
+    role: '',
+    password: ''
+   };
+  
   
     constructor(private httpService: HttpService) { }
   
@@ -27,37 +27,17 @@ export class ListeUsersComponent  {
       let authBody= {"username":"admin","password":"pwd"}
     
       this.httpService.login(authBody).subscribe(value => {
-        console.table(value)
-        localStorage.setItem("token", value.token)
-    
-        this.httpService.getCustomers().subscribe(value => {
-          console.table(value);
-          this.customers = value;
-        })
-    
-      });
-    }
-
-    customerSubmit() {
-    
-      let authBody= {"username":"admin","password":"pwd"}
-    
-      this.httpService.login(authBody).subscribe(value => {
         console.log(value)
         localStorage.setItem("token", value.token)
     
-        this.httpService.addCustomers(this.customerInfo).subscribe(
-          response => {
-            this.customerInfo = response; 
-            window.location.reload();
-          }
-        );
-        
+        this.httpService.getUsers().subscribe(value => {
+          console.table(value);
+          this.users = value;
+        })     
       });
-  
     }
   
-    customerModify() {
+    userSubmit() {
       
       let authBody= {"username":"admin","password":"pwd"}
     
@@ -65,9 +45,9 @@ export class ListeUsersComponent  {
         console.log(value)
         localStorage.setItem("token", value.token)
     
-        this.httpService.modifyCustomers(this.customerInfo).subscribe(
+        this.httpService.addUsers(this.userInfo).subscribe(
           response => {
-            this.customerInfo = response; 
+            this.userInfo = response; 
             window.location.reload();
           }
         );
@@ -76,18 +56,17 @@ export class ListeUsersComponent  {
   
     }
   
-    
-  
-    customerDelete() {
+    userModify() {
+      
       let authBody= {"username":"admin","password":"pwd"}
     
       this.httpService.login(authBody).subscribe(value => {
         console.log(value)
         localStorage.setItem("token", value.token)
     
-        this.httpService.deleteCustomers(this.customerInfo).subscribe(
+        this.httpService.modifyUsers(this.userInfo).subscribe(
           response => {
-            this.customerInfo = response; 
+            this.userInfo = response; 
             window.location.reload();
           }
         );
@@ -96,10 +75,28 @@ export class ListeUsersComponent  {
   
     }
   
-
-
-
-  private router = inject(Router);
+    
+  
+    userDelete() {
+      let authBody= {"username":"admin","password":"pwd"}
+    
+      this.httpService.login(authBody).subscribe(value => {
+        console.log(value)
+        localStorage.setItem("token", value.token)
+    
+        this.httpService.deleteUsers(this.userInfo).subscribe(
+          response => {
+            this.userInfo = response; 
+            window.location.reload();
+          }
+        );
+        
+      });
+  
+    }
+   
+  
+   private router = inject(Router);
   
   
    pageProduits() {
@@ -110,9 +107,13 @@ export class ListeUsersComponent  {
     this.router.navigate(['/commandes']);
   }
   
-  pageUsers() {
+  pageClients() {
     this.router.navigate(['/clients']);
   }
- 
-
+  
+  pageUsers() {
+    this.router.navigate(['/users']);
+  }
+    
+  
 }
