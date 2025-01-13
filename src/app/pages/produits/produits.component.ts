@@ -115,7 +115,14 @@ pageClients() {
 pageUsers() {
   this.router.navigate(['/users']);
 }
-  
+pageConnexion() {
+  this.router.navigate(['/connexion']);
+}
+
+pageAccueil() {
+  this.router.navigate(['/accueil']);
+}
+
 
 }
 

@@ -114,6 +114,13 @@ export class UsersComponent implements OnInit {
   pageUsers() {
     this.router.navigate(['/users']);
   }
-    
+  pageConnexion() {
+    this.router.navigate(['/connexion']);
+  }
+  
+  pageAccueil() {
+    this.router.navigate(['/accueil']);
+  }
+  
   
 }

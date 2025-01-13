@@ -104,4 +104,20 @@ pageConnexion () {
   localStorage.removeItem("token")
 }
 
+pageProduits() {
+  this.router.navigate(['/produits']);
+}
+
+pageCommandes() {
+  this.router.navigate(['/commandes']);
+}
+
+pageClients() {
+  this.router.navigate(['/clients']);
+}
+
+pageUsers() {
+  this.router.navigate(['/users']);
+}
+
 }
