@@ -11,8 +11,11 @@
 }
 
 header {
-    margin: 0px;
     padding-top: 1px;
+    background: url("/jungle4.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 600px;
 }
 
 .titre {
@@ -48,7 +51,7 @@ nav {
     margin: 0 auto;
 }
 
-.hoverLeft, .hoverMiddle, .hoverRight {
+.hoverLeft, .hoverMiddle, .hoverRight, .hoverExtremRight {
     color: green;
     height: 70px;
     width: 100%;
@@ -63,16 +66,21 @@ nav {
 .hoverRight {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
-    border-top-right-radius: 40px;
+}
+
+.hoverExtremRight {
+    border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border-top-right-radius: 40px;
         border-bottom-right-radius: 40px;
 }
     
-.hoverLeft h2, .hoverMiddle h2, .hoverRight h2{
+.hoverLeft h2, .hoverMiddle h2, .hoverRight h2, .hoverExtremRight h2{
     margin-top: 20px;
 }
 
 
-.hoverLeft:hover, .hoverMiddle:hover, .hoverRight:hover{
+.hoverLeft:hover, .hoverMiddle:hover, .hoverRight:hover, .hoverExtremRight:hover{
     background-color: rgb(0, 82, 0);
     color: white;
 }
@@ -96,13 +104,6 @@ nav {
 
 .login h2:hover {
     text-decoration: underline;
-}
-
-
-.image {
-    background-image: url("/jungle4.jpg");
-    height: 600px;
-    margin: 0;
 }
 
 .liste {
@@ -161,4 +162,47 @@ footer {
     color: white;
     height: 50px;
     padding-top: 50px;
+}
+
+@media (max-width: 1100px) {
+    nav {
+        display: block;
+        margin: 0;
+        margin-top: -55px;
+        border-radius: 0px;
+    }
+
+    .hoverLeft, .hoverExtremRight {
+        border-top-left-radius: 00px;
+        border-bottom-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        margin-top: 10px;
+    }
+
+    table {
+    
+    border-collapse: collapse;
+    padding: 25px 0;
+    height: 100px;
+    font-size: 0.6em;
+    
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    width: 10%;
+    
+   }
+   th,
+   td {
+       padding: 8px 10px;
+       padding-right: 100px;
+       padding-left: 150px;
+   }
+
+   tr {
+       border-bottom: 2px solid rgb(0, 82, 0);
+   }
+
 }

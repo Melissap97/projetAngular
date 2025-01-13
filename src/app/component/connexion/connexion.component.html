@@ -28,7 +28,8 @@
                 <input class="form-control"  type="password" id="password" name="password" [(ngModel)]="password" 
                     #passwordRef="ngModel" />
             </div>
-            <button type="submit" [disabled]="!isPasswordInvalide() && !isNomInvalide()" (click)="pageAccueil()" class="btn btn-primary" (submit)="productSubmit()">Se connecter</button>
+            <button type="submit" [disabled]=" !isNomInvalide() || !isPasswordInvalide()" (click)="combine()" class="btn btn-primary">Se connecter</button>
+            
             
         </form>
         

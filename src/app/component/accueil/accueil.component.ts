@@ -97,12 +97,11 @@ ngOnInit(){
   });
 }
   
-    private router = inject(Router);
+private router = inject(Router);
   
-    pageConnexion () {
-    this.router.navigate(["/connexion"]); 
-  }
+pageConnexion () {
+  this.router.navigate(["/connexion"]); 
+  localStorage.removeItem("token")
+}
 
-  
-  
 }

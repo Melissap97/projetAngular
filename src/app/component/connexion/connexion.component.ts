@@ -18,6 +18,7 @@ export class ConnexionComponent {
   products = new Array<any>();
   usernames: string[] = []; 
   passwords: string[] = [];
+  usernameOrders = new Array<any>();
     
   constructor(private httpTestService:ApiClientsService){}
 
@@ -36,7 +37,8 @@ ngOnInit() {
   let authBody= {"username":"admin","password":"pwd"}
   this.httpTestService.connexion(authBody).subscribe(value => {
     console.log(value)
-    localStorage.setItem("token", value.token)
+    const valueToken = value.token
+    localStorage.setItem("token", valueToken)
 
     this.httpTestService.getUser().subscribe(value => {
       console.table(value)
@@ -49,12 +51,23 @@ ngOnInit() {
       this.usernames = username
       this.passwords = password
     })
-    
-    
-
   })
 }
 
+userAllRole = new Array<any>();
+localStorageAdmin() {
+  let authBody= {"username":"admin","password":"pwd"}
+  this.httpTestService.connexion(authBody).subscribe(value => {
+    console.log(value)
+      this.httpTestService.getUser().subscribe(
+        users => {
+          this.users = users;
+          const currentId = this.users.filter(user => user.username === user.role);
+          localStorage.setItem("role", JSON.stringify(currentId));
+        }
+      )
+  })
+}
 isNomInvalide(): boolean {
     return this.usernames.includes(this.nom);
 }
@@ -62,34 +75,22 @@ isNomInvalide(): boolean {
 isPasswordInvalide(): boolean{
     return this.passwords.includes(this.password);
 }
-productSubmit() {
-  
-    let authBody= {"username":"admin","password":"pwd"}
 
-    this.httpTestService.connexion(authBody).subscribe(value => {
-      console.log(value)
-      localStorage.setItem("token", value.token)
+private router = inject(Router);
 
-      this.httpTestService.postPosts(this.productInfo).subscribe(
-        response => {
-          this.productInfo = response; 
-          window.location.reload();
-        }
-      );
-      
-    });
-   
-}
-
-
-
-  private router = inject(Router);
-
-  pageAccueil() {
+pageAccueil() {
   this.router.navigate(["/accueil"]); 
-
-  
+  let authBody= {"username":"admin","password":"pwd"}
+  this.httpTestService.connexion(authBody).subscribe(value => {
+    console.log(value)
+    const valueToken = value.token
+    localStorage.setItem("token", valueToken)
+  })
 } 
+combine() {
+  this.pageAccueil();
+  this.localStorageAdmin();
+}
 
 
 }
