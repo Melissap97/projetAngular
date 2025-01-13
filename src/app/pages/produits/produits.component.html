@@ -12,15 +12,13 @@
     </div>
     <nav>
         <div class="hoverLeft">
-          <button class="pageButton" (click)="pageProduits()">
-            <h2>Produits </h2>
-        </button>
+            <h2 (click)="pageProduits()">Produits </h2>
       </div>
       <div class="hoverMiddle">
-          <button (click)="pageCommandes()"><h2>Commandes </h2></button>
+          <h2 (click)="pageCommandes()"> Commandes </h2>
       </div>
       <div class="hoverRight">
-          <button (click)="pageUsers()"><h2>Clients</h2></button>
+          <h2 (click)="pageUsers()"> Clients</h2>
       </div>
   </nav> 
  
@@ -83,9 +81,15 @@
        <div *ngIf="modifierId.invalid && modifierId.touched ">
         <small>L'Id du produit est requis.</small>
        </div> 
-       <input [(ngModel)]="productInfo.name" name="Modifier un produit" type="text" placeholder="Modifier un produit"/> <br>
+       <input [(ngModel)]="productInfo.name" name="Modifier un produit"  required #modifierProduit="ngModel" type="text" placeholder="Modifier un produit"/> <br>
+       <div *ngIf="modifierProduit.invalid && modifierProduit.touched ">
+        <small>Le nom du produit est requis.</small>
+       </div> 
        <input class = "form-control" [(ngModel)]="productInfo.stock" name="Modifier le stock du produit" min="1" required #modifierStock="ngModel"  type="number" placeholder="Modifier le stock du produit"/> <br>
-       <button  class="submit">Envoyer</button>
+       <div *ngIf="modifierStock.invalid && modifierStock.touched && modifierProduit.touched ">
+        <small>Le stock du produit est requis.</small>
+       </div> 
+       <button  class="submit"  [disabled]="addForm.invalid">Envoyer</button>
        
    </form >
    </div>

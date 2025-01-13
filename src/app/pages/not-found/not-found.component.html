@@ -10,19 +10,17 @@
              <h2>Accueil</h2>
         </div>
     </div>
-      <nav>
-        <div class="hoverLeft">
-          <button (click)="pageProduits()">
-            <h2>Produits </h2>
-        </button>
-      </div>
-      <div class="hoverMiddle">
-          <button (click)="pageCommandes()"><h2>Commandes </h2></button>
-      </div>
-      <div class="hoverRight">
-          <button (click)="pageUsers()"><h2>Clients</h2></button>
-      </div>
-  </nav> 
+    <nav>
+      <div class="hoverLeft">
+          <h2 (click)="pageProduits()">Produits </h2>
+    </div>
+    <div class="hoverMiddle">
+        <h2 (click)="pageCommandes()"> Commandes </h2>
+    </div>
+    <div class="hoverRight">
+        <h2 (click)="pageUsers()"> Clients</h2>
+    </div>
+</nav> 
    
    
   <div class="titre">

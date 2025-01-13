@@ -44,28 +44,7 @@ nav {
     font-size: 11px;
     border-radius: 40px;
     width: 30%;
-    margin-top: 20px;
-    transform: translate(100%, 0%);
-    margin-left: 60px;
-}
-
-button {
-    color:green;
-    background-color: rgba(255, 255, 255, 0);
-    padding-bottom: 20px;
-    border:none;
-
-}
-
-button:hover {
-    background-color: rgba(255, 255, 255, 0);
-    color: white;
-    cursor: pointer;
-    
-}
-
-.pageButton {
-    color: white;
+    margin: 0 auto;
 }
 
 .hoverLeft, .hoverMiddle, .hoverRight {
@@ -74,14 +53,11 @@ button:hover {
     width: 100%;
     border-top-left-radius: 40px;
     border-bottom-left-radius: 40px;
+    cursor: pointer;
 }
-
-
 .hoverMiddle {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
-    background-color: rgb(0, 82, 0);
-    color: white;
 }
 .hoverRight {
     border-top-left-radius: 0px;
@@ -93,12 +69,13 @@ button:hover {
 .hoverLeft h2, .hoverMiddle h2, .hoverRight h2{
     margin-top: 20px;
 }
-    
 
-.hover:hover {
+
+.hoverLeft:hover, .hoverMiddle:hover, .hoverRight:hover{
     background-color: rgb(0, 82, 0);
     color: white;
 }
+
 
 .hoverLeft:hover, .hoverMiddle:hover, .hoverRight:hover{
     background-color: rgb(0, 82, 0);

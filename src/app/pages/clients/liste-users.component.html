@@ -10,17 +10,15 @@
              <h2>Accueil</h2>
         </div>
     </div>
-      <nav>
+    <nav>
         <div class="hoverLeft">
-          <button (click)="pageProduits()">
-            <h2>Produits </h2>
-        </button>
+            <h2 (click)="pageProduits()">Produits </h2>
       </div>
       <div class="hoverMiddle">
-          <button (click)="pageCommandes()"><h2>Commandes </h2></button>
+          <h2 (click)="pageCommandes()"> Commandes </h2>
       </div>
       <div class="hoverRight">
-          <button class ="pageButton" (click)="pageUsers()"><h2>Clients</h2></button> 
+          <h2 (click)="pageUsers()"> Clients</h2>
       </div>
   </nav> 
    
@@ -64,19 +62,19 @@
     <form #addForm="ngForm" (ngSubmit)="customerSubmit()">
         
        <input  class = "form-control" [(ngModel)]="customerInfo.name" name="Ajouter un client" required #ajouterClient="ngModel" type="text" placeholder="Ajouter un client"/> <br>
-       <div *ngIf="ajouterClient.invalid" >
+       <div *ngIf="ajouterClient.invalid && ajouterClient.touched" >
            <small>Le nom du client est requis.</small>
        </div>
        <input  class = "form-control" [(ngModel)]="customerInfo.email" name="Ajouter un email" required #ajouterEmail="ngModel" type="email" placeholder="Ajouter un email"/> <br>
-       <div *ngIf="ajouterClient.invalid" >
+       <div *ngIf="ajouterEmail.invalid && ajouterEmail.touched" >
            <small>L'email est requis.</small>
        </div>
        <input  class = "form-control" [(ngModel)]="customerInfo.phone" name="Ajouter un numéro de téléphone" required #ajouterTelephone="ngModel" type="number" placeholder="Ajouter un numéro de téléphone"/> <br>
-       <div *ngIf="ajouterClient.invalid" >
+       <div *ngIf="ajouterTelephone.invalid && ajouterTelephone.touched" >
            <small>Le numéro de téléphone est requis.</small>
        </div>
        <input  class = "form-control" [(ngModel)]="customerInfo.address" name="Ajouter une adresse" required #ajouterAdresse="ngModel" type="text" placeholder="Ajouter une adresse"/> <br>
-       <div *ngIf="ajouterClient.invalid" >
+       <div *ngIf="ajouterAdresse.invalid && ajouterAdresse.touched" >
            <small>L'adresse est requise.</small>
        </div>
        <button  class="submit"  [disabled]="addForm.invalid">Envoyer</button>
@@ -96,19 +94,19 @@
          </div> 
    
             <input  class = "form-control" [(ngModel)]="customerInfo.name" name="Modifier un client" required #modifierClient="ngModel" type="text" placeholder="Modifier un client"/> <br>
-            <div *ngIf="ajouterClient.invalid" >
+            <div *ngIf="modifierClient.invalid && modifierClient.touched" >
                 <small>Le nom du client est requis.</small>
             </div>
             <input  class = "form-control" [(ngModel)]="customerInfo.email" name="Modifier un email" required #modifierEmail="ngModel" type="email" placeholder="Modifier un email"/> <br>
-            <div *ngIf="ajouterClient.invalid" >
+            <div *ngIf="modifierEmail.invalid && modifierEmail.touched" >
                 <small>L'email est requis.</small>
             </div>
-            <input  class = "form-control" [(ngModel)]="customerInfo.phone" name="Modifier un numéro de téléphone" required #ajouterTelephone="ngModel" type="number" placeholder="Ajouter un numéro de téléphone"/> <br>
-            <div *ngIf="ajouterClient.invalid" >
+            <input  class = "form-control" [(ngModel)]="customerInfo.phone" name="Modifier un numéro de téléphone" required #modifierTelephone="ngModel" type="number" placeholder="Ajouter un numéro de téléphone"/> <br>
+            <div *ngIf="modifierTelephone.invalid && modifierTelephone.touched" >
                 <small>Le numéro de téléphone est requis.</small>
             </div>
-            <input  class = "form-control" [(ngModel)]="customerInfo.address" name="Ajouter une adresse" required #ajouterAdresse="ngModel" type="text" placeholder="Ajouter une adresse"/> <br>
-            <div *ngIf="ajouterClient.invalid" >
+            <input  class = "form-control" [(ngModel)]="customerInfo.address" name="Ajouter une adresse" required #modifierAdresse="ngModel" type="text" placeholder="Ajouter une adresse"/> <br>
+            <div *ngIf="modifierAdresse.invalid && modifierAdresse.touched" >
                 <small>L'adresse est requise.</small>
             </div>
             <button  class="submit"  [disabled]="addForm.invalid">Envoyer</button>
