@@ -101,7 +101,6 @@ private router = inject(Router);
   
 pageConnexion () {
   this.router.navigate(["/connexion"]); 
-  localStorage.removeItem("token")
 }
 
 }
