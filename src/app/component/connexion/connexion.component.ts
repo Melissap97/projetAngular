@@ -6,6 +6,8 @@ import { FormsModule} from '@angular/forms'
 import { CommonModule } from '@angular/common';
 import { Role } from '../../enums/Roles';
 import { Token } from '@angular/compiler';
+import { User } from '../../module/User';
+import { Password } from '../../module/Password';
 
 @Component({
   selector: 'app-connexion',
@@ -17,9 +19,12 @@ export class ConnexionComponent {
   
   users = new Array<any>();
   products = new Array<any>();
-  usernames: string[] = []; 
-  passwords: string[] = [];
+  usernames: any[] = []; 
+  passwords: any[] = [];
   usernameOrders = new Array<any>();
+
+  usersList: User[] = [];
+  passwordList: Password[] = [];
     
   constructor(private httpTestService:ApiClientsService){}
 
@@ -33,12 +38,14 @@ ngOnInit() {
     next: (users) => {
       console.table(users);
        
-      let usersList = users.map(user => user.username); 
-      let passwordList = users.map(user => user.password)
-      console.log("Liste des utilisateurs :", usersList);
-      console.log("Liste des mots de passe:", passwordList)
+      this.usersList = users.map(user => user.username); 
+      this.passwordList = users.map(user => user.password)
+      console.log("Liste des utilisateurs :", this.usersList);
+      console.log("Liste des mots de passe:", this.passwordList)
     
-      let authBody = { "username": usersList[0], "password": passwordList[0] };
+      let authBody = { "username": this.usersList[0], "password": this.passwordList[0] };
+
+      console.log("AuthBody utilisé :", authBody);
 
       this.httpTestService.connexion(authBody).subscribe({
         next: (response) => {
@@ -54,45 +61,55 @@ ngOnInit() {
       })
     }
   })
-  
-
 }
+
+
+
+  //Boolean
+  
+login() {
+    // Créer l'objet d'authentification
+    let authBody = { username: this.user, password: this.mdp };
+
+    // Appel à l'API pour la connexion
+    this.httpTestService.connexion(authBody).subscribe({
+      next: (response) => {
+        console.log('Connexion réussie :', response);
+        const valueToken = response.token;
+        localStorage.setItem('token', valueToken);
+        alert('Connexion réussie !');
+      },
+      error: (err) => {
+        console.error('Erreur de connexion :', err);
+        alert('Nom d\'utilisateur ou mot de passe incorrect.');
+      },
+    });
+  }
 
 
 isNomInvalide(): boolean {
-  return !this.usernames.includes(this.user); // Vérifie si le nom n'existe pas
+    return this.usernames.includes(this.usersList);
 }
 
-isPasswordInvalide(): boolean {
-  return !this.passwords.includes(this.mdp); // Vérifie si le mot de passe n'existe pas
-}
-
-login() {
-  let authBody = { username: this.user, password: this.mdp };
-
-  this.httpTestService.connexion(authBody).subscribe({
-    next: (response) => {
-      console.log("Connexion réussie :", response);
-      const valueToken = response.token;
-      localStorage.setItem("token", valueToken);
-      alert("Connexion réussie !");
-    },
-    error: (err) => {
-      console.error("Erreur de connexion :", err);
-      alert("Nom d'utilisateur ou mot de passe incorrect.");
-    }
-  });
+isPasswordInvalide(): boolean{
+    return this.passwords.includes(this.passwordList);
 }
 
 private router = inject(Router);
 
 pageAccueil() {
   this.router.navigate(["/accueil"]); 
-}
-
+  let authBody= {"username":"admin","password":"pwd"}
+  this.httpTestService.connexion(authBody).subscribe(value => {
+    console.log(value)
+    const valueToken = value.token
+    localStorage.setItem("token", valueToken)
+  })
+} 
 combine() {
-  this.login();
   this.pageAccueil();
-}
+  
 }
 
+
+}
