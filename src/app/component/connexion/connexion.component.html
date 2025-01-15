@@ -12,10 +12,10 @@
         <i class="fas fa-users" id="userSign"></i>
         <h1>Connexion</h1>
 
-        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="formulaire">
+        <form #loginForm="ngForm"  class="formulaire">
             <div class="nameGroup">
                 <label for="name"><i class="fas fa-user"></i></label>
-                <input class = "form-control" id="nom" name="nom" [(ngModel)]="nom" required #nameRef="ngModel" />
+                <input class = "form-control" id="nom" name="nom" [(ngModel)]="user" required #nameRef="ngModel" />
                 <div *ngIf="nameRef.invalid && nameRef.touched ">
                     <small>Le nom est requis.</small>
                 </div>
@@ -25,7 +25,7 @@
             </div>
             <div class="passwordGroup">
                 <label for="password"><i class="fas fa-lock"></i></label>
-                <input class="form-control"  type="password" id="password" name="password" [(ngModel)]="password" 
+                <input class="form-control"  type="password" id="password" name="password" [(ngModel)]="mdp" 
                     #passwordRef="ngModel" />
             </div>
             <button type="submit" [disabled]=" !isNomInvalide() || !isPasswordInvalide()" (click)="combine()" class="btn btn-primary">Se connecter</button>

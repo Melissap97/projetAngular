@@ -5,6 +5,7 @@ import { ApiClientsService } from '../../services/api-clients.service';
 import { FormsModule} from '@angular/forms'
 import { CommonModule } from '@angular/common';
 import { Role } from '../../enums/Roles';
+import { Token } from '@angular/compiler';
 
 @Component({
   selector: 'app-connexion',
@@ -22,75 +23,76 @@ export class ConnexionComponent {
     
   constructor(private httpTestService:ApiClientsService){}
 
-  nom: string = '';
-  password: string = '';
-  onSubmit(form: any) {
-  console.log('Formulaire soumis !');
-  console.log('Valeurs :', form.value);
-}
-productInfo: any = {
-      username: '',
-      password:''
-    };
+  user: any = ""
+  mdp: any = ""
+  
+
 
 ngOnInit() {
-  let authBody= {"username":"admin","password":"pwd"}
-  this.httpTestService.connexion(authBody).subscribe(value => {
-    console.log(value)
-    const valueToken = value.token
-    localStorage.setItem("token", valueToken)
+  this.httpTestService.getUser().subscribe({
+    next: (users) => {
+      console.table(users);
+       
+      let usersList = users.map(user => user.username); 
+      let passwordList = users.map(user => user.password)
+      console.log("Liste des utilisateurs :", usersList);
+      console.log("Liste des mots de passe:", passwordList)
+    
+      let authBody = { "username": usersList[0], "password": passwordList[0] };
 
-    this.httpTestService.getUser().subscribe(value => {
-      console.table(value)
-      this.users = value
-       console.log("this.users assigné :", this.users);
+      this.httpTestService.connexion(authBody).subscribe({
+        next: (response) => {
+          console.log('Réponse connexion :', response);
+          const valueToken = response.token;
+          localStorage.setItem("token", valueToken);
 
-       const username = this.users.map(user => user.username); 
-    const password = this.users.map(user => user.password);
-
-      this.usernames = username
-      this.passwords = password
-    })
-  })
-}
-
-userAllRole = new Array<any>();
-localStorageAdmin() {
-  let authBody= {"username":"admin","password":"pwd"}
-  this.httpTestService.connexion(authBody).subscribe(value => {
-    console.log(value)
-      this.httpTestService.getUser().subscribe(
-        users => {
-          this.users = users;
-          const currentId = this.users.filter(user => user.username === user.role);
-          localStorage.setItem("role", JSON.stringify(currentId));
+          // Stockage ou logique supplémentaire ici si nécessaire
+        },
+        error: (err) => {
+          console.error("Ahah t'es une merde:", err);
         }
-      )
+      })
+    }
   })
-}
-isNomInvalide(): boolean {
-    return this.usernames.includes(this.nom);
+  
+
 }
 
-isPasswordInvalide(): boolean{
-    return this.passwords.includes(this.password);
+
+isNomInvalide(): boolean {
+  return !this.usernames.includes(this.user); // Vérifie si le nom n'existe pas
+}
+
+isPasswordInvalide(): boolean {
+  return !this.passwords.includes(this.mdp); // Vérifie si le mot de passe n'existe pas
+}
+
+login() {
+  let authBody = { username: this.user, password: this.mdp };
+
+  this.httpTestService.connexion(authBody).subscribe({
+    next: (response) => {
+      console.log("Connexion réussie :", response);
+      const valueToken = response.token;
+      localStorage.setItem("token", valueToken);
+      alert("Connexion réussie !");
+    },
+    error: (err) => {
+      console.error("Erreur de connexion :", err);
+      alert("Nom d'utilisateur ou mot de passe incorrect.");
+    }
+  });
 }
 
 private router = inject(Router);
 
 pageAccueil() {
   this.router.navigate(["/accueil"]); 
-  let authBody= {"username":"admin","password":"pwd"}
-  this.httpTestService.connexion(authBody).subscribe(value => {
-    console.log(value)
-    const valueToken = value.token
-    localStorage.setItem("token", valueToken)
-  })
-} 
+}
+
 combine() {
+  this.login();
   this.pageAccueil();
-  this.localStorageAdmin();
+}
 }
 
-
-}
