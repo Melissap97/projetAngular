@@ -19,21 +19,25 @@ export class UsersComponent implements OnInit {
     role: '',
     password: ''
    };
-  
+
   
     constructor(private httpService: HttpService) { }
   
-    ngOnInit(){
-      let authBody= {"username":"admin","password":"pwd"}
+    ngOnInit() {
+      let authBody = { "username": "admin", "password": "pwd" };
     
       this.httpService.login(authBody).subscribe(value => {
-        console.log(value)
-        localStorage.setItem("token", value.token)
+        console.log(value);
+        localStorage.setItem("token", value.token);
     
         this.httpService.getUsers().subscribe(value => {
-          console.table(value);
-          this.users = value;
-        })     
+          if (authBody.username !== "admin") {
+            console.log("Admins only");
+          } else {
+            console.table(value);
+            this.users = value;
+          }
+        });
       });
     }
   
@@ -94,6 +98,24 @@ export class UsersComponent implements OnInit {
       });
   
     }
+
+    
+
+    /*postPost() {
+      let authBody= {"username":"admin","password":"pwd"}
+    
+      this.httpService.login(authBody).subscribe(value => {
+        console.log(value)
+        localStorage.setItem("token", value.token)
+    
+        this.httpService.getUsers().subscribe(value => {
+          if (req.user.role !== "admin") {
+            return res.status(403).json({ message: "Admins only" });
+        }
+        })     
+      });
+
+    }*/
    
   
    private router = inject(Router);
@@ -121,6 +143,8 @@ export class UsersComponent implements OnInit {
   pageAccueil() {
     this.router.navigate(['/accueil']);
   }
+
+  
   
   
 }
