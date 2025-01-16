@@ -98,24 +98,6 @@ export class UsersComponent implements OnInit {
       });
   
     }
-
-    
-
-    /*postPost() {
-      let authBody= {"username":"admin","password":"pwd"}
-    
-      this.httpService.login(authBody).subscribe(value => {
-        console.log(value)
-        localStorage.setItem("token", value.token)
-    
-        this.httpService.getUsers().subscribe(value => {
-          if (req.user.role !== "admin") {
-            return res.status(403).json({ message: "Admins only" });
-        }
-        })     
-      });
-
-    }*/
    
   
    private router = inject(Router);

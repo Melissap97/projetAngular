@@ -71,6 +71,8 @@ nav {
     border-bottom-left-radius: 0px;
     border-top-right-radius: 40px;
     border-bottom-right-radius: 40px;
+    background-color: rgb(0, 82, 0);
+    color: white;
 }
 
 .hoverLeft h2, .hoverMiddle h2, .hoverRight h2, .hoverExtremRight h2{

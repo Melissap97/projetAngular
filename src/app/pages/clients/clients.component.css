@@ -47,6 +47,7 @@ nav {
     margin: 0 auto;
 }
 
+
 .hoverLeft, .hoverMiddle, .hoverRight, .hoverExtremRight {
     color: green;
     height: 70px;
@@ -63,6 +64,8 @@ nav {
 .hoverRight {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
+    background-color: rgb(0, 82, 0);
+    color: white;
 }
 
 .hoverExtremRight {
@@ -70,6 +73,7 @@ nav {
     border-bottom-left-radius: 0px;
     border-top-right-radius: 40px;
     border-bottom-right-radius: 40px;
+
 }
 
 .hoverLeft h2, .hoverMiddle h2, .hoverRight h2, .hoverExtremRight h2{

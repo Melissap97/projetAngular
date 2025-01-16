@@ -56,6 +56,12 @@ nav {
     border-bottom-left-radius: 40px;
     cursor: pointer;
 }
+
+.hoverLeft {
+    background-color: rgb(0, 82, 0);
+    color: white;
+}
+
 .hoverMiddle {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
