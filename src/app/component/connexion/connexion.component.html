@@ -15,8 +15,8 @@
         <form #loginForm="ngForm" class="formulaire" (submit)="login()">
             <div class="nameGroup">
                 <label for="name"><i class="fas fa-user"></i></label>
-                <input class="form-control" id="nom" name="nom" [(ngModel)]="userList" required #nameRef="ngModel" />
-                <div *ngIf="nameRef.invalid && nameRef.touched ">
+                <input class="form-control" id="nom" name="nom" [(ngModel)]="username" required #nameRef="ngModel" />
+                <div *ngIf="nameRef.invalid && nameRef.touched">
                     <small>Le nom est requis.</small>
                 </div>
                 <div *ngIf="!isNomInvalide() && nameRef.touched">
@@ -25,13 +25,12 @@
             </div>
             <div class="passwordGroup">
                 <label for="password"><i class="fas fa-lock"></i></label>
-                <input class="form-control" type="password" id="password" name="password" [(ngModel)]="passwordList"
+                <input class="form-control" type="password" id="password" name="password" [(ngModel)]="password"
                     #passwordRef="ngModel" />
             </div>
-            <button type="submit" [disabled]=" !isNomInvalide() || !isPasswordInvalide()" (click)="combine()"
-                class="btn btn-primary">Se connecter</button>
-        
-        
+            <button type="submit" [disabled]="!isNomInvalide() || !isPasswordInvalide()" class="btn btn-primary">
+                Se connecter
+            </button>
         </form>
         
     </div>

@@ -14,45 +14,37 @@ import { User } from '../../module/User';
   styleUrl: './connexion.component.css'
 })
 export class ConnexionComponent {
-  
-userList: User[] = []
-passwordList: User[] = []
-users: any[] = []
-passwords: any[] = [];
+  username: string = '';
+  password: string = '';
+  userList: User[] = [];
 
-constructor(private httpTestService:ApiClientsService){}
+  constructor(private httpTestService: ApiClientsService) {}
 
-ngOnInit() {
-  this.httpTestService.getUser()
-  .subscribe(users =>{
-    console.table(users)
-      
-    this.userList = users.map(user => user.username)
-    this.passwordList = users.map(user => user.password)
-    console.log("Liste des utilisateurs:", this.userList)
-    console.log("Liste des mdp:", this.passwordList)
-  })
-}
+  ngOnInit() {
+    this.httpTestService.getUser().subscribe(users => {
+      this.userList = users;
+      console.log("Liste des utilisateurs récupérée :", this.userList);
+    });
+  }
 
-login() {
-  let authBody = {"username": this.userList, "password": this.passwordList}
-  console.log("Liste des utilisateurs et mdp", authBody)
-  this.httpTestService.connexion(authBody)
-  .subscribe ( value => {
-    console.log('Connexion réussie :', value);
-    const valueToken = value.token;
-    localStorage.setItem('token', valueToken);
-    alert('Connexion réussie !');
-  })
-}
+  isNomInvalide(): boolean {
+    return this.userList.some(user => user.username === this.username);
+  }
 
-isNomInvalide(): boolean {
-    return this.users.includes(this.userList);
-}
+  isPasswordInvalide(): boolean {
+    return this.userList.some(user => user.username === this.username && user.password === this.password);
+  }
 
-isPasswordInvalide(): boolean{
-    return this.passwords.includes(this.passwordList);
-}
+  login() {
+    const authBody = { username: this.username, password: this.password };
+    this.httpTestService.connexion(authBody).subscribe(value => {
+      localStorage.setItem('user', this.username);
+      localStorage.setItem('mdp', this.password )
+      alert('Connexion réussie !');
+      this.router.navigate(['/accueil']);
+    })
+  }
+
 
 private router = inject(Router);
 
