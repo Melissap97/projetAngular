@@ -95,6 +95,8 @@ nav {
     border-bottom-left-radius: 0px;
     border-top-right-radius: 40px;
     border-bottom-right-radius: 40px;
+    background-color: #005400;
+    color: white;
 }
 
 .hoverLeft h2, .hoverMiddle h2, .hoverRight h2, .hoverExtremRight h2{
@@ -103,7 +105,7 @@ nav {
 
 
 .hoverLeft:hover, .hoverMiddle:hover, .hoverRight:hover, .hoverExtremRight:hover{
-    background-color: rgb(0, 82, 0);
+    background-color: #005400;
     color: white;
 }
 
@@ -161,7 +163,7 @@ table {
 
 
 thead tr {
-    background-color: rgb(0, 82, 0);
+    background-color: #005400;
     color: #ffffff;
     text-align: left;
     text-align: center;
@@ -175,7 +177,7 @@ th,td {
 }
 
 tr {
-    border-bottom: 2px solid rgb(0, 82, 0);
+    border-bottom: 2px solid #005400;
 }
 
 tr:nth-of-type(even) {
@@ -214,7 +216,7 @@ input {
 }
 
 button.submit, button.delete {
-    background-color: rgb(0, 82, 0);
+    background-color: #005400;
     border-radius: 40px;
     width: 15%;
     padding-top: 10px;

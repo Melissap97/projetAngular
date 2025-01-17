@@ -77,9 +77,11 @@ export class ApiClientsService {
   }
 
   deleteToken() {
-  localStorage.removeItem('user');
-  localStorage.removeItem('mdp');
-  localStorage.removeItem('role');
+     
+    localStorage.removeItem('user');
+    localStorage.removeItem('mdp');
+    localStorage.removeItem('role');
+  }
 }
 
-}
+
