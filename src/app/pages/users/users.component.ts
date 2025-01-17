@@ -20,12 +20,15 @@ export class UsersComponent implements OnInit {
     role: '',
     password: ''
    };
+   role: any
   
   
     constructor(private httpService: HttpService, private navbar: NavbarService) { }
   
     ngOnInit(){
       let authBody= {"username":"admin","password":"pwd"}
+      this.role = localStorage.getItem("role")
+      
     
       this.httpService.login(authBody).subscribe(value => {
         console.log(value)

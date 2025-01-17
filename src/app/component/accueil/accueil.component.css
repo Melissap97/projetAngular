@@ -182,7 +182,7 @@ tr:nth-of-type(even) {
 }
 
 footer {
-    background-color: rgb(0, 82, 0);
+    background-color: #005400;
     text-align: center;
     color: white;
     height: 50px;
