@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { inject } from '@angular/core';
+import { NavbarService } from '../../services/navbar.service';
 import { ApiClientsService } from '../../services/api-clients.service';
 import { FormsModule} from '@angular/forms'
 import { CommonModule } from '@angular/common';
-import { Role } from '../../enums/Roles';
+import { User } from '../../module/User';
+
 
 @Component({
   selector: 'app-connexion',
@@ -13,84 +14,44 @@ import { Role } from '../../enums/Roles';
   styleUrl: './connexion.component.css'
 })
 export class ConnexionComponent {
-  
-  users = new Array<any>();
-  products = new Array<any>();
-  usernames: string[] = []; 
-  passwords: string[] = [];
-  usernameOrders = new Array<any>();
-    
-  constructor(private httpTestService:ApiClientsService){}
-
-  nom: string = '';
+  username: string = '';
   password: string = '';
-  onSubmit(form: any) {
-  console.log('Formulaire soumis !');
-  console.log('Valeurs :', form.value);
-}
-productInfo: any = {
-      username: '',
-      password:''
-    };
+  role: string = ''
+  rolesList: User[] = [];
+  userList: User[] = [];
 
-ngOnInit() {
-  let authBody= {"username":"admin","password":"pwd"}
-  this.httpTestService.connexion(authBody).subscribe(value => {
-    console.log(value)
-    const valueToken = value.token
-    localStorage.setItem("token", valueToken)
+  constructor(private httpTestService: ApiClientsService, private router: Router) {}
 
-    this.httpTestService.getUser().subscribe(value => {
-      console.table(value)
-      this.users = value
-       console.log("this.users assigné :", this.users);
-
-       const username = this.users.map(user => user.username); 
-    const password = this.users.map(user => user.password);
-
-      this.usernames = username
-      this.passwords = password
+  ngOnInit() {
+    this.httpTestService.getUser().subscribe(users => {
+      console.log('Données brutes récupérées :', users);
+      this.userList = users;
+      let roleUser: any = this.rolesList.some(user => user.role === this.role)
+      this.role = roleUser
+      console.log('role de ces morts:', this.role)
+      console.log('Liste des utilisateurs :', this.userList);
+      console.log('Liste des rôles :', this.rolesList);
     })
-  })
-}
+  }
 
-userAllRole = new Array<any>();
-localStorageAdmin() {
-  let authBody= {"username":"admin","password":"pwd"}
-  this.httpTestService.connexion(authBody).subscribe(value => {
-    console.log(value)
-      this.httpTestService.getUser().subscribe(
-        users => {
-          this.users = users;
-          const currentId = this.users.filter(user => user.username === user.role);
-          localStorage.setItem("role", JSON.stringify(currentId));
-        }
-      )
-  })
-}
-isNomInvalide(): boolean {
-    return this.usernames.includes(this.nom);
-}
+  isNomInvalide() : boolean {
+    return this.userList.some(user => user.username === this.username);
+  }
 
-isPasswordInvalide(): boolean{
-    return this.passwords.includes(this.password);
-}
+  isPasswordInvalide() : boolean {
+    return this.userList.some(user => user.username === this.username && user.password === this.password);
+  }
 
-private router = inject(Router);
+  
 
-pageAccueil() {
-  this.router.navigate(["/accueil"]); 
-  let authBody= {"username":"admin","password":"pwd"}
-  this.httpTestService.connexion(authBody).subscribe(value => {
-    console.log(value)
-    const valueToken = value.token
-    localStorage.setItem("token", valueToken)
-  })
-} 
-combine() {
-  this.pageAccueil();
-  this.localStorageAdmin();
-}
+  login() {
+    const authBody = { username: this.username, password: this.password };
+    this.httpTestService.connexion(authBody).subscribe(user => {
+      localStorage.setItem('user', this.username);
+      localStorage.setItem('mdp', this.password);
+      localStorage.setItem('role', this.role);
 
-
+      this.router.navigate(['/accueil']);
+    });
+  }
 }

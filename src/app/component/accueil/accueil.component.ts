@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NavbarService } from '../../services/navbar.service';
 import { ApiClientsService } from '../../services/api-clients.service';
 import { Router } from '@angular/router';
 import { inject } from '@angular/core';
@@ -28,7 +29,7 @@ products = new Array<any>()
 customerOrders = new Array<any>();
 productsOrders = new Array<any>()
     
-  constructor(private httpTestService:ApiClientsService){}
+  constructor(private httpTestService:ApiClientsService, private navbar:NavbarService){}
 
 ngOnInit(){
   
@@ -37,27 +38,6 @@ ngOnInit(){
    this.httpTestService.connexion(authBody).subscribe(value => {
      console.log(value)
     localStorage.setItem("token", value.token)
-
-  //   this.httpTestService.getProducts().subscribe(value => {
-  //     console.table(value)
-  //    this.orders = value;
-  //   })
-
-  // });
-  // this.httpTestService.connexion(authBody).subscribe(value => {
-  //   console.log(value)
-  //   localStorage.setItem("token", value.token)
-
-  //   this.httpTestService.getCustomers().subscribe(value => {
-  //     console.table(value)
-  //    this.customers = value;
-  //   })
-  // })
-  // this.orders.forEach(order => {
-  //    let customersEachOrder = this.customers.find(customer => customer.id == order.id);
-  //    console.log(customersEachOrder)
-  // })
-
 
     forkJoin({
       orders: this.httpTestService.getOrders(),
@@ -96,12 +76,16 @@ ngOnInit(){
     })
   });
 }
+
+afficherNav() {
+  this.navbar.afficherToggle()
+}
+
   
 private router = inject(Router);
   
 pageConnexion () {
   this.router.navigate(["/connexion"]); 
-  localStorage.removeItem("token")
 }
 
 pageProduits() {

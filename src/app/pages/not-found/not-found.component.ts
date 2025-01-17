@@ -1,5 +1,6 @@
 import { Component, inject} from '@angular/core';
 import { Router } from '@angular/router';
+import { NavbarService } from '../../services/navbar.service';
 
 @Component({
   selector: 'app-not-found',
@@ -7,7 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./not-found.component.css']
 })
 export class NotFoundComponent {
+   constructor(private navbar:NavbarService) {}
 
+   afficherNav() {
+  this.navbar.afficherToggle()
+}
    private router = inject(Router);
     
     

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
+import { NavbarService } from '../../services/navbar.service';
 import { Router } from '@angular/router';
 import { HttpService } from '../services/http.service';
 import { FormsModule } from '@angular/forms';
@@ -21,7 +22,7 @@ export class ClientsComponent  {
    };
 
   
-    constructor(private httpService: HttpService) { }
+    constructor(private httpService: HttpService, private navbar:NavbarService) { }
   
     ngOnInit(){
       let authBody= {"username":"admin","password":"pwd"}
@@ -37,6 +38,10 @@ export class ClientsComponent  {
     
       });
     }
+
+  afficherNav() {
+    this.navbar.afficherToggle()
+  }
 
     customerSubmit() {
     

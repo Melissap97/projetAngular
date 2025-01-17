@@ -3,6 +3,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpService } from '../services/http.service';
 import { Router } from '@angular/router';
+import { NavbarService } from '../../services/navbar.service';
 
 @Component({
   selector: 'app-users',
@@ -21,7 +22,7 @@ export class UsersComponent implements OnInit {
    };
 
   
-    constructor(private httpService: HttpService) { }
+    constructor(private httpService: HttpService, private navbar: NavbarService) { }
   
     ngOnInit() {
       let authBody = { "username": "admin", "password": "pwd" };
@@ -39,6 +40,10 @@ export class UsersComponent implements OnInit {
           }
         });
       });
+    }
+
+    afficherNav() {
+      this.navbar.afficherToggle()
     }
   
     userSubmit() {
