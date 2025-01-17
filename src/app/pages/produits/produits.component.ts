@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
+import { NavbarService } from '../../services/navbar.service';
 
 @Component({
   selector: 'app-produits',
@@ -22,7 +23,7 @@ export class ProduitsComponent implements OnInit {
  };
 
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService, private navbar: NavbarService) { }
 
   ngOnInit(){
     let authBody= {"username":"admin","password":"pwd"}
@@ -37,6 +38,10 @@ export class ProduitsComponent implements OnInit {
       })     
     });
   }
+
+  afficherNav() {
+  this.navbar.afficherToggle()
+}
 
   productSubmit() {
     

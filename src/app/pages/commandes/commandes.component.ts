@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpService } from '../services/http.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { NavbarService } from '../../services/navbar.service';
 
 @Component({
   selector: 'app-commandes',
@@ -20,7 +21,7 @@ export class CommandesComponent {
     createdAt: ''
    };
   
-    constructor(private httpService: HttpService) { }
+    constructor(private httpService: HttpService, private navbar:NavbarService) { }
   
     ngOnInit(){
       let authBody= {"username":"admin","password":"pwd"}
@@ -35,6 +36,10 @@ export class CommandesComponent {
         })
     
       });
+    }
+
+    afficherNav() {
+      this.navbar.afficherToggle()
     }
 
     orderSubmit() {
