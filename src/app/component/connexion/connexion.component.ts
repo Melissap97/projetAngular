@@ -25,10 +25,11 @@ export class ConnexionComponent {
   ngOnInit() {
     this.httpTestService.getUser().subscribe(users => {
       console.log('Données brutes récupérées :', users);
+
+      // Vérifiez si les utilisateurs ont bien un rôle
       this.userList = users;
-      let roleUser: any = this.rolesList.some(user => user.role === this.role)
-      this.role = roleUser
-      console.log('role de ces morts:', this.role)
+      this.rolesList = users.map(user => user.role);
+
       console.log('Liste des utilisateurs :', this.userList);
       console.log('Liste des rôles :', this.rolesList);
     })
@@ -41,17 +42,23 @@ export class ConnexionComponent {
   isPasswordInvalide() : boolean {
     return this.userList.some(user => user.username === this.username && user.password === this.password);
   }
-
   
 
   login() {
     const authBody = { username: this.username, password: this.password };
     this.httpTestService.connexion(authBody).subscribe(user => {
+    
+    const loggedInUser = this.userList.find(user => user.username === this.username && user.password === this.password);
+
+    if (loggedInUser) {
+      this.role = loggedInUser.role; // Détermine le rôle
       localStorage.setItem('user', this.username);
       localStorage.setItem('mdp', this.password);
       localStorage.setItem('role', this.role);
-
       this.router.navigate(['/accueil']);
-    });
+    } else {
+      console.error("Utilisateur non trouvé ou informations incorrectes.");
+    }
+  })
   }
 }
