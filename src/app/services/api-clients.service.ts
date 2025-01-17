@@ -76,4 +76,10 @@ export class ApiClientsService {
     return this.http.get<any[]>("http://localhost:3000/api/users", { headers });
   }
 
+  deleteToken() {
+  localStorage.removeItem('user');
+  localStorage.removeItem('mdp');
+  localStorage.removeItem('role');
+}
+
 }

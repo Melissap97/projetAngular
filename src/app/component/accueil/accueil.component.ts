@@ -57,6 +57,7 @@ ngOnInit(){
       });
     });
 
+
     forkJoin({
       orders: this.httpTestService.getOrders(),
       products: this.httpTestService.getProduits(),
@@ -77,6 +78,7 @@ ngOnInit(){
   });
 }
 
+
 afficherNav() {
   this.navbar.afficherToggle()
 }
@@ -86,6 +88,7 @@ private router = inject(Router);
   
 pageConnexion () {
   this.router.navigate(["/connexion"]); 
+   this.httpTestService.deleteToken()
 }
 
 pageProduits() {

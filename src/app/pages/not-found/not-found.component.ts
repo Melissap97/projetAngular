@@ -1,6 +1,7 @@
 import { Component, inject} from '@angular/core';
 import { Router } from '@angular/router';
 import { NavbarService } from '../../services/navbar.service';
+import { HttpService } from '../services/http.service';
 
 @Component({
   selector: 'app-not-found',
@@ -8,7 +9,7 @@ import { NavbarService } from '../../services/navbar.service';
   styleUrls: ['./not-found.component.css']
 })
 export class NotFoundComponent {
-   constructor(private navbar:NavbarService) {}
+   constructor(private httpService: HttpService,  private navbar:NavbarService) {}
 
    afficherNav() {
   this.navbar.afficherToggle()
@@ -32,6 +33,7 @@ export class NotFoundComponent {
     }
     pageConnexion() {
       this.router.navigate(['/connexion']);
+      this.httpService.deleteToken()
     }
   
     pageAccueil() {

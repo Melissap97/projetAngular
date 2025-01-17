@@ -190,6 +190,14 @@ export class HttpService {
     const headers = { Authorization : token}
     return this.httpClient.delete(`http://localhost:3000/api/orders/${order.id}`, { headers } );
   }
+
+  deleteToken() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('mdp');
+    localStorage.removeItem('role');
+  }
 }
+
+
   
 

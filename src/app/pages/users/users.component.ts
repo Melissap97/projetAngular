@@ -121,6 +121,7 @@ export class UsersComponent implements OnInit {
   }
   pageConnexion() {
     this.router.navigate(['/connexion']);
+    this.httpService.deleteToken()
   }
   
   pageAccueil() {

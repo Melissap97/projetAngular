@@ -117,6 +117,7 @@ export class CommandesComponent {
   
   pageConnexion() {
     this.router.navigate(['/connexion']);
+    this.httpService.deleteToken()
   }
 
   pageAccueil() {

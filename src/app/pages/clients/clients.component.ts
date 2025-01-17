@@ -109,6 +109,7 @@ export class ClientsComponent  {
   
    pageProduits() {
     this.router.navigate(['/produits']);
+
   }
   
   pageCommandes() {
@@ -124,6 +125,7 @@ export class ClientsComponent  {
 
   pageConnexion() {
     this.router.navigate(['/connexion']);
+    this.httpService.deleteToken()
   }
 
   pageAccueil() {
