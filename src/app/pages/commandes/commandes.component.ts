@@ -20,6 +20,20 @@ export class CommandesComponent {
     userId: '',
     createdAt: ''
    };
+   modifyOrderInfo = {
+    id: '',
+    productId:'',
+    quantity: '',
+    userId: '',
+    createdAt: ''
+   };
+   deleteOrderInfo = {
+    id: '',
+    productId:'',
+    quantity: '',
+    userId: '',
+    createdAt: ''
+   };
   
     constructor(private httpService: HttpService, private navbar:NavbarService) { }
   
@@ -69,7 +83,7 @@ export class CommandesComponent {
         console.log(value)
         localStorage.setItem("token", value.token)
     
-        this.httpService.modifyOrders(this.orderInfo).subscribe(
+        this.httpService.modifyOrders(this.modifyOrderInfo).subscribe(
           response => {
             this.orderInfo = response; 
             window.location.reload();
@@ -87,7 +101,7 @@ export class CommandesComponent {
         console.log(value)
         localStorage.setItem("token", value.token)
     
-        this.httpService.deleteOrders(this.orderInfo).subscribe(
+        this.httpService.deleteOrders(this.deleteOrderInfo).subscribe(
           response => {
             this.orderInfo = response; 
             window.location.reload();

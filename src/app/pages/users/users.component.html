@@ -87,12 +87,12 @@
         </div>
            <form #modifyForm="ngForm" (ngSubmit)="userModify()">
     
-           <input class = "form-control" [(ngModel)]="userInfo.id" name="Selectionner l'Id de l'utilisateur"  required #modifierId="ngModel" min ="1" type="number" placeholder="Selectionner l'Id de l'utilisateur"/> <br>
+           <input class = "form-control" [(ngModel)]="modifyUserInfo.id" name="Selectionner l'Id de l'utilisateur"  required #modifierId="ngModel" min ="1" type="number" placeholder="Selectionner l'Id de l'utilisateur"/> <br>
            <div *ngIf="modifierId.invalid && modifierId.touched ">
             <small>L'Id de l'utilisateur est requis.</small>
            </div> 
-           <input [(ngModel)]="userInfo.username" name="Modifier le nom de l'utilisateur"  required #modifierUser="ngModel" type="text" placeholder="Modifier le nom de l'utilisateur"/> <br>
-           <input class = "form-control" [(ngModel)]="userInfo.role" name="Modifier le role de l'utilisateur"  required #modifierRole="ngModel"  type="text" placeholder="Modifier le role de l'utilisateur"/> <br>
+           <input [(ngModel)]="modifyUserInfo.username" name="Modifier le nom de l'utilisateur"  required #modifierUser="ngModel" type="text" placeholder="Modifier le nom de l'utilisateur"/> <br>
+           <input class = "form-control" [(ngModel)]="modifyUserInfo.role" name="Modifier le role de l'utilisateur"  required #modifierRole="ngModel"  type="text" placeholder="Modifier le role de l'utilisateur"/> <br>
            <button  class="submit" >Envoyer</button>
            
        </form >
@@ -102,7 +102,7 @@
     <div class ="liste">
         <h2>Supprimer un utilisateur</h2> <br>
     <form (ngSubmit)="userDelete()">
-        <input [(ngModel)]="userInfo.id" name="Id de l'utilisateur" type="number" min="1" placeholder="Id de l'utilisateur"/><br>
+        <input [(ngModel)]="deleteUserInfo.id" name="Id de l'utilisateur" type="number" min="1" placeholder="Id de l'utilisateur"/><br>
         <button  type="submit" class="delete">Supprimer</button> 
     
     </form>

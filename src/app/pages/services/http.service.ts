@@ -135,7 +135,7 @@ export class HttpService {
     return this.httpClient.put(`http://localhost:3000/api/customers/${customer.id}`,  customer, { headers });
   }
 
-  modifyOrders(customer: any): Observable<any> {
+  modifyOrders(order: any): Observable<any> {
     const token = localStorage.getItem("token")
    
     if(!token){
@@ -143,7 +143,7 @@ export class HttpService {
     }
     
     const headers = { Authorization : token}
-    return this.httpClient.put(`http://localhost:3000/api/customers/${customer.id}`,  customer, { headers });
+    return this.httpClient.put(`http://localhost:3000/api/orders/${order.id}`,  order, { headers });
   }
   
   

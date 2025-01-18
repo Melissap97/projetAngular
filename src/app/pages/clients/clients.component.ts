@@ -20,6 +20,20 @@ export class ClientsComponent  {
     phone: '',
     address: ''
    };
+   modifyCustomerInfo = {
+    id: '',
+    name:'',
+    email: '',
+    phone: '',
+    address: ''
+   };
+   deleteCustomerInfo = {
+    id: '',
+    name:'',
+    email: '',
+    phone: '',
+    address: ''
+   };
 
   
     constructor(private httpService: HttpService, private navbar:NavbarService) { }
@@ -70,7 +84,7 @@ export class ClientsComponent  {
         console.log(value)
         localStorage.setItem("token", value.token)
     
-        this.httpService.modifyCustomers(this.customerInfo).subscribe(
+        this.httpService.modifyCustomers(this.modifyCustomerInfo).subscribe(
           response => {
             this.customerInfo = response; 
             window.location.reload();
@@ -90,7 +104,7 @@ export class ClientsComponent  {
         console.log(value)
         localStorage.setItem("token", value.token)
     
-        this.httpService.deleteCustomers(this.customerInfo).subscribe(
+        this.httpService.deleteCustomers(this.deleteCustomerInfo).subscribe(
           response => {
             this.customerInfo = response; 
             window.location.reload();
