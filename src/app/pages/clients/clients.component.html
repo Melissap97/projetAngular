@@ -1,0 +1,141 @@
+
+<body>
+    <div class ="image">
+     <header>
+      <div class="login">
+          <div class="connexion">
+               <h2 (click)="pageConnexion()">Connexion</h2>
+          </div>
+          <div class="accueil">
+               <h2 (click)="pageAccueil()">Accueil</h2>
+          </div>
+      </div>
+      <nav>
+          <div class="hoverLeft">
+              <h2 (click)="pageProduits()">Produits </h2>
+        </div>
+        <div class="hoverMiddle">
+            <h2 (click)="pageCommandes()"> Commandes </h2>
+        </div>
+        <div class="hoverRight">
+            <h2 (click)="pageClients()"> Clients</h2>
+        </div>
+        <div class="hoverExtremRight">
+            <h2 (click)="pageUsers()"> Users</h2>
+        </div>
+    </nav> 
+    <div class="active" (click)="afficherNav()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+     
+    <div class="titre">
+        <h1> Projet Angular</h1>
+     <h3> Bienvenue</h3>
+    </div>
+    
+     </header>
+    </div>
+    
+     <main>
+     <div class="utilisateurs">
+     <div class="liste">
+        <h2>Liste des clients:</h2>
+    </div>
+    
+    <table>
+      <thead >
+      <tr>
+          <th>Id</th>
+          <th>Nom</th>
+          <th>Email</th>
+          <th>Téléphone</th>
+          <th>Adresse</th>
+      </tr>
+  </thead>
+      <tr *ngFor="let customer of customers">
+          <td>{{customer.id}}</td>
+          <td>{{customer.name}}</td>
+          <td>{{customer.email}}</td>   
+          <td>{{customer.phone}}</td>
+          <td>{{customer.address}}</td>
+      </tr>
+  </table>
+  
+  <div class ="formulaire">
+      <div class="liste">
+          <h2>Ajouter un client</h2> <br>
+      </div>
+      <form #addForm="ngForm" (ngSubmit)="customerSubmit()">
+          
+         <input  class = "form-control" [(ngModel)]="customerInfo.name" name="Ajouter un client" required #ajouterClient="ngModel" type="text" placeholder="Ajouter un client"/> <br>
+         <div *ngIf="ajouterClient.invalid && ajouterClient.touched" >
+             <small>Le nom du client est requis.</small>
+         </div>
+         <input  class = "form-control" [(ngModel)]="customerInfo.email" name="Ajouter un email" required #ajouterEmail="ngModel" type="email" placeholder="Ajouter un email"/> <br>
+         <div *ngIf="ajouterEmail.invalid && ajouterEmail.touched" >
+             <small>L'email est requis.</small>
+         </div>
+         <input  class = "form-control" [(ngModel)]="customerInfo.phone" name="Ajouter un numéro de téléphone" required #ajouterTelephone="ngModel" type="number" placeholder="Ajouter un numéro de téléphone"/> <br>
+         <div *ngIf="ajouterTelephone.invalid && ajouterTelephone.touched" >
+             <small>Le numéro de téléphone est requis.</small>
+         </div>
+         <input  class = "form-control" [(ngModel)]="customerInfo.address" name="Ajouter une adresse" required #ajouterAdresse="ngModel" type="text" placeholder="Ajouter une adresse"/> <br>
+         <div *ngIf="ajouterAdresse.invalid && ajouterAdresse.touched" >
+             <small>L'adresse est requise.</small>
+         </div>
+         <button  class="submit"  [disabled]="addForm.invalid">Envoyer</button>
+         
+     </form >
+     </div>
+     
+     <div class ="formulaire">
+         <div class="liste">
+             <h2>Modifier un client</h2> <br>
+          </div>
+            <form #modifyForm="ngForm" (ngSubmit)="customerModify()">
+  
+           <input class = "form-control" [(ngModel)]="modifyCustomerInfo.id" name="Selectionner l'Id du client" min="1" required #modifierId="ngModel" type="number" placeholder="Selectionner l'Id du client"/> <br>
+           <div *ngIf="modifierId.invalid && modifierId.touched ">
+           <small>L'Id du client est requis.</small>
+           </div> 
+     
+              <input  class = "form-control" [(ngModel)]="modifyCustomerInfo.name" name="Modifier un client" required #modifierClient="ngModel" type="text" placeholder="Modifier un client"/> <br>
+              <div *ngIf="modifierClient.invalid && modifierClient.touched" >
+                  <small>Le nom du client est requis.</small>
+              </div>
+              <input  class = "form-control" [(ngModel)]="modifyCustomerInfo.email" name="Modifier un email" required #modifierEmail="ngModel" type="email" placeholder="Modifier un email"/> <br>
+              <div *ngIf="modifierEmail.invalid && modifierEmail.touched" >
+                  <small>L'email est requis.</small>
+              </div>
+              <input  class = "form-control" [(ngModel)]="modifyCustomerInfo.phone" name="Modifier un numéro de téléphone" required #modifierTelephone="ngModel" type="number" placeholder="Ajouter un numéro de téléphone"/> <br>
+              <div *ngIf="modifierTelephone.invalid && modifierTelephone.touched" >
+                  <small>Le numéro de téléphone est requis.</small>
+              </div>
+              <input  class = "form-control" [(ngModel)]="modifyCustomerInfo.address" name="Ajouter une adresse" required #modifierAdresse="ngModel" type="text" placeholder="Ajouter une adresse"/> <br>
+              <div *ngIf="modifierAdresse.invalid && modifierAdresse.touched" >
+                  <small>L'adresse est requise.</small>
+              </div>
+              <button  class="submit"  [disabled]="addForm.invalid">Envoyer</button>
+            
+        </form >
+        </div>
+     
+     <div class ="formulaire">
+     <div class ="liste">
+         <h2>Supprimer un client</h2> <br>
+     <form (ngSubmit)="customerDelete()">
+         <input [(ngModel)]="deleteCustomerInfo.id" name="Id un produit" type="number" min="1" placeholder="Id du client"/><br>
+         <button  type="submit" class="delete">Supprimer</button> 
+     
+     </form>
+       </div>
+     </div>
+     
+     </div>
+      </main>
+      </body>
+    
+    <footer> 
+        <p>© Adrien & Melissa 🦆</p></footer>

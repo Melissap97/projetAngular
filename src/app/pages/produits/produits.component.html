@@ -1,0 +1,122 @@
+
+<body>
+<div class ="image">
+ <header>
+    <div class="login">
+        <div class="connexion">
+             <h2 (click)="pageConnexion()">Connexion</h2>
+        </div>
+        <div class="accueil">
+             <h2 (click)="pageAccueil()">Accueil</h2>
+        </div>
+    </div>
+    <nav>
+        <div class="hoverLeft">
+            <h2 (click)="pageProduits()">Produits </h2>
+      </div>
+      <div class="hoverMiddle">
+          <h2 (click)="pageCommandes()"> Commandes </h2>
+      </div>
+      <div class="hoverRight">
+        <h2 (click)="pageClients()"> Clients</h2>
+    </div>
+    <div class="hoverExtremRight">
+        <h2 (click)="pageUsers()"> Users</h2>
+    </div>
+  </nav> 
+  <div class="active" (click)="afficherNav()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+ 
+ <div class="titre">
+     <h1> Projet Angular</h1>
+     <h3> Bienvenue</h3>
+ </div>
+
+ </header>
+ </div>
+
+ <main>
+ <div class="produits">
+ <div class="liste">
+     <h2>Liste des produits:</h2>
+ </div>
+
+
+<table>
+    <thead >
+    <tr>
+        <th>Id</th>
+        <th>Nom</th>
+        <th>Stock</th>
+    </tr>
+</thead>
+    <tr *ngFor="let product of products">
+        <td>{{product.id}}</td>
+        <td>{{product.name}}</td>
+        <td>{{product.stock}} restants</td>   
+    </tr>
+</table>
+
+ <div class ="formulaire">
+ <div class="liste">
+     <h2>Ajouter un produit</h2> <br>
+ </div>
+ <form #addForm="ngForm" (ngSubmit)="productSubmit()">
+     
+    <input  class = "form-control" [(ngModel)]="productInfo.name" name="Ajouter un produit" required #ajouterProduit="ngModel" type="text" placeholder="Ajouter un produit"/> <br>
+    <div *ngIf="ajouterProduit.invalid  && ajouterQuantite.touched  ">
+        <small>Le nom du produit est requis.</small>
+    </div>
+    <input class = "form-control"[(ngModel)]="productInfo.stock" name="Ajouter une quantité" min="1" required #ajouterQuantite="ngModel" type="number" placeholder="Ajouter une quantité"/> <br>
+    <div *ngIf="ajouterQuantite.invalid &&  ajouterProduit.touched ">
+        <small>La quantité du produit est requise.</small>
+    </div>
+    <button  class="submit"  [disabled]="addForm.invalid">Envoyer</button>
+    
+</form >
+</div>
+
+<div class ="formulaire">
+    <div class="liste">
+        <h2>Modifier un produit</h2> <br>
+    </div>
+       <form #modifyForm="ngForm" (ngSubmit)="productModify()">
+
+       <input class = "form-control" [(ngModel)]="modifyProductInfo.id" name="Selectionner l'Id du produit" min="1" required #modifierId="ngModel" type="number" placeholder="Selectionner l'Id du produit"/> <br>
+       <div *ngIf="modifierId.invalid && modifierId.touched ">
+        <small>L'Id du produit est requis.</small>
+       </div> 
+       <input [(ngModel)]="modifyProductInfo.name" name="Modifier un produit"  required #modifierProduit="ngModel" type="text" placeholder="Modifier un produit"/> <br>
+       <div *ngIf="modifierProduit.invalid && modifierProduit.touched ">
+        <small>Le nom du produit est requis.</small>
+       </div> 
+       <input class = "form-control" [(ngModel)]="modifyProductInfo.stock" name="Modifier le stock du produit" min="1" required #modifierStock="ngModel"  type="number" placeholder="Modifier le stock du produit"/> <br>
+       <div *ngIf="modifierStock.invalid && modifierStock.touched && modifierProduit.touched ">
+        <small>Le stock du produit est requis.</small>
+       </div> 
+       <button  class="submit">Envoyer</button>
+       
+   </form >
+   </div>
+
+<div class ="formulaire">
+<div class ="liste">
+    <h2>Supprimer un produit</h2> <br>
+<form (ngSubmit)="productDelete()">
+    <input [(ngModel)]="productInfo.id" name="Id un produit" type="number" min="1" placeholder="Id du produit"/><br>
+    <button  type="submit" class="delete">Supprimer</button> 
+
+</form>
+  </div>
+</div>
+
+</div>
+ </main>
+ </body>
+
+
+ <footer> 
+     <p>© Adrien & Melissa 🦆</p></footer>
