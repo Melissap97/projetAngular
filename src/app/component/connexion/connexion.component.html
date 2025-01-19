@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <main>
+    <div class="connexion">
+        <i class="fas fa-users" id="userSign"></i>
+        <h1>Connexion</h1>
+
+        <form #loginForm="ngForm" class="formulaire" (submit)="login()">
+            <div class="nameGroup">
+                <label for="name"><i class="fas fa-user"></i></label>
+                <input class="form-control" id="nom" name="nom" [(ngModel)]="username" required #nameRef="ngModel" />
+                <div *ngIf="nameRef.invalid && nameRef.touched">
+                    <small>Le nom est requis.</small>
+                </div>
+                <div *ngIf="!isNomInvalide() && nameRef.touched">
+                    <small>Le nom saisi n'est pas autorisé.</small>
+                </div>
+            </div>
+            <div class="passwordGroup">
+                <label for="password"><i class="fas fa-lock"></i></label>
+                <input class="form-control" type="password" id="password" name="password" [(ngModel)]="password"
+                    #passwordRef="ngModel" />
+            </div>
+            <button type="submit" [disabled]="!isNomInvalide() || !isPasswordInvalide()" class="btn btn-primary">
+                Se connecter
+            </button>
+        </form>
+        
+    </div>
+    </main>
+</body>

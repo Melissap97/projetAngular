@@ -1,0 +1,95 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="login">
+            <!-- Relier au click la navigation entre les pages, avec les fonctions de ts. -->
+            <!-- Supprime en plus les token pour la page connexion. -->
+            <h2 (click)="pageConnexion()">Connexion</h2>
+        </div>
+        <nav>
+            <div class="hoverLeft">
+                <h2 (click)="pageProduits()">Produits </h2>
+            </div>
+            <div class="hoverMiddle">
+                <h2 (click)="pageCommandes()">Commandes </h2>
+            </div>
+            <div class="hoverRight">
+                <h2 (click)="pageClients()">Clients</h2>
+            </div>
+            <div class="hoverExtremRight">
+                <h2 (click)="pageUsers()">Users</h2>
+            </div>
+        </nav>
+        <div class="active" (click)="afficherNav()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="titre">
+            <h1> Projet Angular</h1>
+            <h3> Bienvenue</h3>
+        </div>
+
+    </header>
+   
+
+    <main>
+        <div class="produits">
+            <div class="liste">
+                <h2>Liste de commandes par clients :</h2>
+                <div class="commandes">
+                <!-- Création d'un tableau -->
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nom des clients</th>
+                            <th>Nombre de commandes réalisés</th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let customer of customerOrders">
+                            <!-- Registre chaque client avec leur commande -->
+                            <td>{{ customer.name }}</td>
+                            <td>{{ customer.totalOrdersId }}</td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+                <h2 class = "produitsH2">Liste de commandes par produits :</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nom des produits</th>
+                            <th>Nombre de commandes par produits</th>
+                
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of productsOrders">
+                            <!-- La même -->
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.totalOrdersId }}</td>
+                
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+
+
+<footer>
+    <!-- Coin coin la sainte divinité -->
+    <p>© Adrien & Melissa 🦆</p>
+</footer>
