@@ -20,7 +20,23 @@ export class UsersComponent implements OnInit {
     role: '',
     password: ''
    };
+
    role: any
+
+   modifyUserInfo = {
+    id: '',
+    username:'',
+    role: '',
+    password: ''
+   };
+   deleteUserInfo = {
+    id: '',
+    username:'',
+    role: '',
+    password: ''
+   };
+
+
   
     // ngOnInit(){
     //   let authBody= {"username":"admin","password":"pwd"}
@@ -77,7 +93,7 @@ export class UsersComponent implements OnInit {
         console.log(value)
         localStorage.setItem("token", value.token)
     
-        this.httpService.modifyUsers(this.userInfo).subscribe(
+        this.httpService.modifyUsers(this.modifyUserInfo).subscribe(
           response => {
             this.userInfo = response; 
             window.location.reload();
@@ -97,7 +113,7 @@ export class UsersComponent implements OnInit {
         console.log(value)
         localStorage.setItem("token", value.token)
     
-        this.httpService.deleteUsers(this.userInfo).subscribe(
+        this.httpService.deleteUsers(this.deleteUserInfo).subscribe(
           response => {
             this.userInfo = response; 
             window.location.reload();

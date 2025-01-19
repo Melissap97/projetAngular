@@ -96,24 +96,24 @@
           </div>
             <form #modifyForm="ngForm" (ngSubmit)="customerModify()">
   
-           <input class = "form-control" [(ngModel)]="customerInfo.id" name="Selectionner l'Id du client" min="1" required #modifierId="ngModel" type="number" placeholder="Selectionner l'Id du client"/> <br>
+           <input class = "form-control" [(ngModel)]="modifyCustomerInfo.id" name="Selectionner l'Id du client" min="1" required #modifierId="ngModel" type="number" placeholder="Selectionner l'Id du client"/> <br>
            <div *ngIf="modifierId.invalid && modifierId.touched ">
            <small>L'Id du client est requis.</small>
            </div> 
      
-              <input  class = "form-control" [(ngModel)]="customerInfo.name" name="Modifier un client" required #modifierClient="ngModel" type="text" placeholder="Modifier un client"/> <br>
+              <input  class = "form-control" [(ngModel)]="modifyCustomerInfo.name" name="Modifier un client" required #modifierClient="ngModel" type="text" placeholder="Modifier un client"/> <br>
               <div *ngIf="modifierClient.invalid && modifierClient.touched" >
                   <small>Le nom du client est requis.</small>
               </div>
-              <input  class = "form-control" [(ngModel)]="customerInfo.email" name="Modifier un email" required #modifierEmail="ngModel" type="email" placeholder="Modifier un email"/> <br>
+              <input  class = "form-control" [(ngModel)]="modifyCustomerInfo.email" name="Modifier un email" required #modifierEmail="ngModel" type="email" placeholder="Modifier un email"/> <br>
               <div *ngIf="modifierEmail.invalid && modifierEmail.touched" >
                   <small>L'email est requis.</small>
               </div>
-              <input  class = "form-control" [(ngModel)]="customerInfo.phone" name="Modifier un numéro de téléphone" required #modifierTelephone="ngModel" type="number" placeholder="Ajouter un numéro de téléphone"/> <br>
+              <input  class = "form-control" [(ngModel)]="modifyCustomerInfo.phone" name="Modifier un numéro de téléphone" required #modifierTelephone="ngModel" type="number" placeholder="Ajouter un numéro de téléphone"/> <br>
               <div *ngIf="modifierTelephone.invalid && modifierTelephone.touched" >
                   <small>Le numéro de téléphone est requis.</small>
               </div>
-              <input  class = "form-control" [(ngModel)]="customerInfo.address" name="Ajouter une adresse" required #modifierAdresse="ngModel" type="text" placeholder="Ajouter une adresse"/> <br>
+              <input  class = "form-control" [(ngModel)]="modifyCustomerInfo.address" name="Ajouter une adresse" required #modifierAdresse="ngModel" type="text" placeholder="Ajouter une adresse"/> <br>
               <div *ngIf="modifierAdresse.invalid && modifierAdresse.touched" >
                   <small>L'adresse est requise.</small>
               </div>
@@ -126,7 +126,7 @@
      <div class ="liste">
          <h2>Supprimer un client</h2> <br>
      <form (ngSubmit)="customerDelete()">
-         <input [(ngModel)]="customerInfo.id" name="Id un produit" type="number" min="1" placeholder="Id du client"/><br>
+         <input [(ngModel)]="deleteCustomerInfo.id" name="Id un produit" type="number" min="1" placeholder="Id du client"/><br>
          <button  type="submit" class="delete">Supprimer</button> 
      
      </form>

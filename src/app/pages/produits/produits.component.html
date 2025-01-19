@@ -85,19 +85,19 @@
     </div>
        <form #modifyForm="ngForm" (ngSubmit)="productModify()">
 
-       <input class = "form-control" [(ngModel)]="productInfo.id" name="Selectionner l'Id du produit" min="1" required #modifierId="ngModel" type="number" placeholder="Selectionner l'Id du produit"/> <br>
+       <input class = "form-control" [(ngModel)]="modifyProductInfo.id" name="Selectionner l'Id du produit" min="1" required #modifierId="ngModel" type="number" placeholder="Selectionner l'Id du produit"/> <br>
        <div *ngIf="modifierId.invalid && modifierId.touched ">
         <small>L'Id du produit est requis.</small>
        </div> 
-       <input [(ngModel)]="productInfo.name" name="Modifier un produit"  required #modifierProduit="ngModel" type="text" placeholder="Modifier un produit"/> <br>
+       <input [(ngModel)]="modifyProductInfo.name" name="Modifier un produit"  required #modifierProduit="ngModel" type="text" placeholder="Modifier un produit"/> <br>
        <div *ngIf="modifierProduit.invalid && modifierProduit.touched ">
         <small>Le nom du produit est requis.</small>
        </div> 
-       <input class = "form-control" [(ngModel)]="productInfo.stock" name="Modifier le stock du produit" min="1" required #modifierStock="ngModel"  type="number" placeholder="Modifier le stock du produit"/> <br>
+       <input class = "form-control" [(ngModel)]="modifyProductInfo.stock" name="Modifier le stock du produit" min="1" required #modifierStock="ngModel"  type="number" placeholder="Modifier le stock du produit"/> <br>
        <div *ngIf="modifierStock.invalid && modifierStock.touched && modifierProduit.touched ">
         <small>Le stock du produit est requis.</small>
        </div> 
-       <button  class="submit"  [disabled]="addForm.invalid">Envoyer</button>
+       <button  class="submit">Envoyer</button>
        
    </form >
    </div>

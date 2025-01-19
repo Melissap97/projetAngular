@@ -1,6 +1,5 @@
-
 <body>
-    <div class ="image">
+    <div class="image">
         <header>
             <div class="login">
                 <div class="connexion">
@@ -23,91 +22,105 @@
                 <div class="hoverExtremRight">
                     <h2 (click)="pageUsers()"> Users</h2>
                 </div>
-            </nav> 
+            </nav>
             <div class="active" (click)="afficherNav()">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-     
-        <div class="titre">
-            <h1> Projet Angular</h1>
-             <h3> Bienvenue</h3>
-        </div>
-     
+
+            <div class="titre">
+                <h1> Projet Angular</h1>
+                <h3> Bienvenue</h3>
+            </div>
+
         </header>
     </div>
-    
+
     <main>
-    <div class="produits" *ngIf = 'role === "admin"'>
-        <div class="liste">
-            <h2>Liste des utilisateurs:</h2>
-        </div>
-        <table>
-           <thead >
-           <tr>
-              <th>Id</th>
-              <th>Username</th>
-              <th>Role</th>
-              <th>Mot de passe</th>
-            </tr>
-        </thead>
-            <tr *ngFor="let user of users">
-               <td>{{user.id}}</td>
-               <td>{{user.username}}</td>
-               <td>{{user.role}}</td>   
-               <td>{{user.password}}</td>
-           </tr>
-        </table>
-    
-        <div class ="formulaire">
-           <div class="liste">
-               <h2>Ajouter un utilisateur</h2> <br>
-            </div>
-            <form #addForm="ngForm" (ngSubmit)="userSubmit()">
-                <input  class = "form-control" [(ngModel)]="userInfo.username" name="Ajouter un utilisateur" required #ajouterUser="ngModel" type="text" placeholder="Ajouter un utilisateur"/> <br>
-                <div *ngIf="ajouterUser.invalid  && ajouterUser.touched  ">
-                    <small>Le nom de l'utilisateur est requis.</small>
-                </div>
-                <input class = "form-control"[(ngModel)]="userInfo.role" name="Ajouter un role"  required #ajouterRole="ngModel" type="text" placeholder="Ajouter un role"/> <br>
-                <div *ngIf="ajouterRole.invalid &&  ajouterRole.touched ">
-                    <small>Le role est requis.</small>
-                </div>
-                <button  class="submit"  [disabled]="addForm.invalid">Envoyer</button>
-            </form >
-        </div>
-    
-        <div class ="formulaire">
+        <div class="produits">
             <div class="liste">
-                <h2>Modifier un utilisateur</h2> <br>
+                <h2>Liste des utilisateurs:</h2>
             </div>
-            <form #modifyForm="ngForm" (ngSubmit)="userModify()">
-                <input class = "form-control" [(ngModel)]="userInfo.id" name="Selectionner l'Id de l'utilisateur"  required #modifierId="ngModel" min ="1" type="number" placeholder="Selectionner l'Id de l'utilisateur"/> <br>
-                <div *ngIf="modifierId.invalid && modifierId.touched ">
-                    <small>L'Id de l'utilisateur est requis.</small>
-                </div> 
-                <input [(ngModel)]="userInfo.username" name="Modifier le nom de l'utilisateur"  required #modifierUser="ngModel" type="text" placeholder="Modifier le nom de l'utilisateur"/> <br>
-                <input class = "form-control" [(ngModel)]="userInfo.role" name="Modifier le role de l'utilisateur"  required #modifierRole="ngModel"  type="text" placeholder="Modifier le role de l'utilisateur"/> <br>
-                <button  class="submit" >Envoyer</button>
-            </form >
-        </div>
-    
-        <div class ="formulaire">
-            <div class ="liste">
-            <h2>Supprimer un utilisateur</h2> <br>
-            <form (ngSubmit)="userDelete()">
-                <input [(ngModel)]="userInfo.id" name="Id de l'utilisateur" type="number" min="1" placeholder="Id de l'utilisateur"/><br>
-                <button  type="submit" class="delete">Supprimer</button> 
-            </form>
+
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Mot de passe</th>
+                    </tr>
+                </thead>
+                <tr *ngFor="let user of users">
+                    <td>{{user.id}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.role}}</td>
+                    <td>{{user.password}}</td>
+                </tr>
+            </table>
+
+            <div class="formulaire">
+                <div class="liste">
+                    <h2>Ajouter un utilisateur</h2> <br>
+                </div>
+                <form #addForm="ngForm" (ngSubmit)="userSubmit()">
+
+                    <input class="form-control" [(ngModel)]="userInfo.username" name="Ajouter un utilisateur" required
+                        #ajouterUser="ngModel" type="text" placeholder="Ajouter un utilisateur" /> <br>
+                    <div *ngIf="ajouterUser.invalid  && ajouterUser.touched  ">
+                        <small>Le nom de l'utilisateur est requis.</small>
+                    </div>
+                    <input class="form-control" [(ngModel)]="userInfo.role" name="Ajouter un role" required
+                        #ajouterRole="ngModel" type="text" placeholder="Ajouter un role" /> <br>
+                    <div *ngIf="ajouterRole.invalid &&  ajouterRole.touched ">
+                        <small>Le role est requis.</small>
+                    </div>
+                    <button class="submit" [disabled]="addForm.invalid">Envoyer</button>
+
+                </form>
             </div>
+
+            <div class="formulaire">
+                <div class="liste">
+                    <h2>Modifier un utilisateur</h2> <br>
+                </div>
+                <form #modifyForm="ngForm" (ngSubmit)="userModify()">
+
+                    <input class="form-control" [(ngModel)]="modifyUserInfo.id"
+                        name="Selectionner l'Id de l'utilisateur" required #modifierId="ngModel" min="1" type="number"
+                        placeholder="Selectionner l'Id de l'utilisateur" /> <br>
+                    <div *ngIf="modifierId.invalid && modifierId.touched ">
+                        <small>L'Id de l'utilisateur est requis.</small>
+                    </div>
+                    <input [(ngModel)]="modifyUserInfo.username" name="Modifier le nom de l'utilisateur" required
+                        #modifierUser="ngModel" type="text" placeholder="Modifier le nom de l'utilisateur" /> <br>
+                    <input class="form-control" [(ngModel)]="modifyUserInfo.role"
+                        name="Modifier le role de l'utilisateur" required #modifierRole="ngModel" type="text"
+                        placeholder="Modifier le role de l'utilisateur" /> <br>
+                    <button class="submit">Envoyer</button>
+
+                </form>
+            </div>
+
+            <div class="formulaire">
+                <div class="liste">
+                    <h2>Supprimer un utilisateur</h2> <br>
+                    <form (ngSubmit)="userDelete()">
+                        <input [(ngModel)]="deleteUserInfo.id" name="Id de l'utilisateur" type="number" min="1"
+                            placeholder="Id de l'utilisateur" /><br>
+                        <button type="submit" class="delete">Supprimer</button>
+
+                    </form>
+                </div>
+            </div>
+
         </div>
-    </div>
-    <div class="userError" *ngIf = 'role === "user"'>
-        <h2>Vous n'avez pas accès à cette catégorie</h2>
-    </div>
-     </main>
-     </body>
-    
-    
-     <footer> 
-         <p>© Adrien & Melissa 🦆</p></footer>
+    </main>
+</body>
+
+
+<footer>
+    <p>© Adrien & Melissa 🦆</p>
+</footer>

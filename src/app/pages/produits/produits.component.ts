@@ -21,6 +21,11 @@ export class ProduitsComponent implements OnInit {
   stock:'',
   id: ''
  };
+ modifyProductInfo = {
+  name: '',
+  stock:'',
+  id: ''
+ };
 
 
   constructor(private httpService: HttpService, private navbar: NavbarService) { }
@@ -70,7 +75,7 @@ export class ProduitsComponent implements OnInit {
       console.log(value)
       localStorage.setItem("token", value.token)
   
-      this.httpService.modifyProducts(this.productInfo).subscribe(
+      this.httpService.modifyProducts(this.modifyProductInfo).subscribe(
         response => {
           this.productInfo = response; 
           window.location.reload();
