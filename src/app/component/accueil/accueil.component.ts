@@ -7,6 +7,8 @@ import { inject } from '@angular/core';
 import { forkJoin } from 'rxjs';
 
 
+
+
 @Component({
   selector: 'app-accueil',
   imports: [CommonModule],
